@@ -1,0 +1,91 @@
+.ticket-container {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
+  box-sizing: border-box; /* Incluye padding y borde en el cálculo del ancho total */
+  margin: 20px 0; /* Margen superior e inferior */
+}
+
+.ticket-price {
+  border: 2px solid #38A52E; /* Bordes verdes */
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #E5F9E7; /* Fondo verde claro */
+}
+
+.ticket-price span {
+  font-weight: bold;
+  color: #38A52E; /* Texto verde */
+}
+
+/* Estilos generales para el contenedor */
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 100%; /* El contenedor ocupa todo el ancho disponible */
+  margin: 0 auto; /* Centrar el contenedor */
+  overflow: auto; /* Agregar scroll si el contenido excede el tamaño del contenedor */
+  position: relative; /* Agregar posición relativa para el posicionamiento del footer */
+}
+
+/* Estilo para el título principal */
+.main-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos generales para los botones */
+#buttons-container {
+  display: grid; /* Cambiar a diseño de cuadrícula */
+  grid-template-columns: repeat(12, 1fr); /* 13 columnas con ancho igual */
+  gap: 0px; /* Espacio entre los botones */
+}
+
+.button {
+  padding: 10px; /* Relleno para el botón */
+  width: 90px; /* Tamaño original del botón */
+  text-align: center; /* Centrar texto */
+  background-color: green; /* Color predeterminado para botones disponibles */
+  color: white; /* Color del texto */
+  border: 2px solid #4caf50; /* Color del borde */
+  border-radius: 15px; /* Esquinas redondeadas */
+  cursor: pointer; /* Cursor de puntero al pasar el ratón */
+  transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.button.occupied {
+  background-color: #ccc; /* Color gris para botones ocupados */
+  cursor: not-allowed; /* Cursor no permitido para botones ocupados */
+}
+
+.button.selected {
+  background-color: #4caf50; /* Tono diferente para botones seleccionados */
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+  #buttons-container {
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas más pequeñas */
+  }
+}
+
+/* Estilos para el bottom sheet */
+#selected-numbers-footer {
+  position: fixed;
+  bottom: -100%; /* Oculto inicialmente */
+  left: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  padding: 10px 20px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  transition: bottom 0.3s ease; /* Transición suave para mostrar/ocultar */
+}
+
+#selected-numbers-footer.show {
+  bottom: 0; /* Mostrar el bottom sheet */
+}

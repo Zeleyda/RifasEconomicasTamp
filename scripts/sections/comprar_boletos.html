@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Boletos</title>
+    <link rel="stylesheet" href="styles/boletos.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="title-boletos">Comprar Boletos</h1>
+
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Buscar un número entre el 0 y el 50000">
+            <button id="reserve-button">Apartar número</button>
+        </div>
+
+        <div id="buttons-container"></div>
+    </div>
+
+    <div id="selected-numbers-footer">
+        <h3 class="title-boletos">Números seleccionados:</h3>
+        <ul id="number-list" class="button"></ul>
+    </div>
+
+    <script src="scripts/jquery.min.js"></script> <!-- jQuery -->
+    <script src="scripts/boletos.js"></script>
+    <script src="scripts/qrcode.min.js"></script> <!-- QR Code library -->
+</body>
+</html>

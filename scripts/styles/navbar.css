@@ -1,0 +1,38 @@
+.custom-navbar {
+    background-color: rgb(0, 0, 0);
+    padding: 50px 50px; /* Aumentar el padding para incrementar el tamaño del navbar */
+    border-top: 30px solid rgb(56, 118, 29);
+    border-bottom: 30px solid rgb(56, 118, 29);
+    height: 160px; /* Ajusta automáticamente la altura del navbar según el contenido */
+}
+
+.navbar-brand {
+    color: #000000 !important;
+    font-size: 40px;
+}
+
+.navbar-nav {
+    margin-right: 100px;
+}
+
+.nav-link {
+    color: #000000 !important;
+    margin-left: 10px;
+    font-size: 18px; /* Ajusta el tamaño de fuente aquí */
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        padding: 50px 50px; /* Aumentar el padding para incrementar el tamaño del navbar */
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-xl {
+        height: 160px; /* Ajusta la altura del navbar para pantallas grandes */
+    }
+}

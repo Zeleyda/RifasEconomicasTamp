@@ -1,0 +1,5 @@
+.content-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding-top: 20px; /* Ajusta el padding-top para evitar que el contenido quede oculto bajo el navbar */
+}
