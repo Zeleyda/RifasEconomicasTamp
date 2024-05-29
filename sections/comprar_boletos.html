@@ -19,12 +19,40 @@
     </div>
 
     <div id="selected-numbers-footer">
+        <button id="close-footer">X</button>
         <h3 class="title-boletos">Números seleccionados:</h3>
-        <ul id="number-list" class="button"></ul>
+        <ul id="number-list"></ul>
+        <button id="show-form-button">Apartar Boletos</button>
     </div>
 
-    <script src="scripts/jquery.min.js"></script> <!-- jQuery -->
+    <div id="reservation-form" class="form-container">
+        <button id="close-form">X</button>
+        <h3>LLENA TUS DATOS Y DA CLICK EN APARTAR</h3>
+        <form>
+            <label for="name">Nombre Completo</label>
+            <input type="text" id="name" placeholder="Nombre y Apellidos">
+            <label for="states-toggle">Cargar Estados de USA</label>
+            <input type="checkbox" id="states-toggle">
+            <label for="state">Estado</label>
+            <select id="state">
+                <option value="">Seleccionar...</option>
+
+                <select name="country" id="country"></select>
+                <select name="state" id="state"></select>
+
+            </select>
+            <label for="phone">Número de Celular (WhatsApp)</label>
+            <input type="text" id="phone" placeholder="10 dígitos sin espacios">
+            <p>¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!</p>
+            <p>Tu boleto sólo dura 24 horas apartado</p>
+            <button type="submit">Apartar Boleto</button>
+        </form>
+    </div>
+
+    <script src="scripts/jquery.min.js"></script>
     <script src="scripts/boletos.js"></script>
-    <script src="scripts/qrcode.min.js"></script> <!-- QR Code library -->
+    <script src="scripts/qrcode.min.js"></script>
+    <script src="https://www.geodatasource.com/javascript/countries.js"></script>
+
 </body>
 </html>

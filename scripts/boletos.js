@@ -69,6 +69,25 @@ $(document).ready(function() {
         }
     });
 
+    // Evento para mostrar el formulario al hacer clic en "Apartar Boletos"
+    $("#show-form-button").on("click", function(event) {
+        $("#reservation-form").show();
+    });
+
+    // Evento para cerrar el formulario
+    $("#close-form").on("click", function(event) {
+        $("#reservation-form").hide();
+    });
+
+    // Evento para cerrar el bottom sheet
+    $("#close-footer").on("click", function(event) {
+        $("#selected-numbers-footer").removeClass('show');
+    });
+
     // Generar 5000 botones como ejemplo
     generateButtons(50001);
+
+     // Cargar los países y estados al inicializar
+     populateCountries("country", "state");
+     populateStates("country", "state");
 });

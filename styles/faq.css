@@ -1,21 +1,7 @@
-/* Contenedor del acordeón */
-.faq-container {
-    padding: 10px; /* Margen interno */
-    margin: 20px auto; /* Margen externo para centrar */
-    max-width: 100%; /* Ancho máximo */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
+.faq-container .accordion-button:not(.collapsed) {
+    box-shadow: none;
 }
 
-/* Acordeón */
-.accordion {
-    margin: 0; /* Elimina márgenes alrededor del acordeón */
-    padding: 0; /* Elimina padding alrededor del acordeón */
-}
-
-/* Acordeón item */
-.accordion-item {
-    margin-bottom: 10px; /* Espacio entre cada item */
-    margin-bottom: 20px; /* Agrega espacio entre cada pregunta del acordeón */
-    max-width: auto; /* Ajusta el ancho del acordeón */
-    margin: 0 auto; /* Centra el acordeón */
+.faq-container .accordion-button:focus {
+    box-shadow: none;
 }
