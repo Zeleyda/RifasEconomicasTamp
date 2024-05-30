@@ -44,14 +44,12 @@ if (!isset($maxNumbers)) {
 $conn->begin_transaction();
 
 try {
-    // Verificar cada número antes de guardar
     foreach ($numeros as $numero) {
         $numero = (int)$numero;
         if ($numero <= 0 || $numero > $maxNumbers) {
             throw new Exception('Número fuera de rango.');
         }
 
-        // Verificar si el número ya está en una orden pendiente de pago o reciente
         $query = "
             SELECT orders.OrderId
             FROM numbers

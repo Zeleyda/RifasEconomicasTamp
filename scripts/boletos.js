@@ -2,6 +2,26 @@ $(document).ready(function() {
     let totalButtons = 50000;
     let buttonsPerLoad = 100;
     let loadedButtons = 0;
+    let occupiedNumbers = new Set();
+
+    // Función para obtener los números ocupados y pendientes desde el servidor
+    function fetchOccupiedNumbers() {
+        return $.ajax({
+            url: 'getOcuppiedNumbers.php?rifaId=1', // Asegúrate de ajustar el rifaId según sea necesario
+            method: 'GET',
+            dataType: 'json'
+        }).then(response => {
+            if (response.success) {
+                response.numbers.forEach(numberInfo => {
+                    occupiedNumbers.add(numberInfo.Number);
+                });
+            } else {
+                console.error('Error fetching occupied numbers:', response.message);
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
     // Función para generar N botones de manera horizontal
     function generateButtons(start, end) {
@@ -13,8 +33,7 @@ $(document).ready(function() {
             const number = String(i).padStart(5, '0'); // Asegurar que tenga 5 cifras
             const button = $("<button class='button'>" + number + "</button>");
 
-            const isMarked = Math.random() > 0.5; // 50% de probabilidad de estar marcado
-            if (isMarked) {
+            if (occupiedNumbers.has(i)) {
                 button.addClass('occupied');
             } else {
                 button.addClass('available');
@@ -67,7 +86,7 @@ $(document).ready(function() {
     $("#show-form-button").on("click", function(event) {
         $("#reservation-form").show();
     });
-
+ 
     $("#close-form").on("click", function(event) {
         $("#reservation-form").hide();
     });
@@ -89,8 +108,11 @@ $(document).ready(function() {
         loadedButtons += buttonsPerLoad;
     }
 
-    // Generar los primeros botones
-    loadMoreButtons();
+    // Obtener los números ocupados y pendientes antes de generar los botones
+    fetchOccupiedNumbers().then(() => {
+        // Generar los primeros botones
+        loadMoreButtons();
+    });
 
     populateCountries("country", "state");
     populateStates("country", "state");
