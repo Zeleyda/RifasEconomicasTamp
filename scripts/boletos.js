@@ -1,28 +1,50 @@
 $(document).ready(function() {
-    // Función para generar N botones de manera horizontal
-    function generateButtons(N) {
+    let totalButtons = 1000; // Ajustar a 1000 botones
+    let occupiedNumbers = new Set();
+
+    // Función para obtener los números ocupados y pendientes desde el servidor
+    function fetchOccupiedNumbers() {
+        return $.ajax({
+            url: 'backend/getOccupiedNumbers.php?rifaId=1', // Asegúrate de ajustar el rifaId según sea necesario
+            method: 'GET',
+            dataType: 'json'
+        }).then(response => {
+            if (response.success) {
+                response.numbers.forEach(numberInfo => {
+                    occupiedNumbers.add(parseInt(numberInfo.Number)); // Asegúrate de que los números sean enteros
+                });
+            } else {
+                console.error('Error fetching occupied numbers:', response.message);
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    // Función para generar todos los botones
+    function generateButtons() {
         const container = $("#buttons-container");
 
-        for (let i = 0; i < N; i++) {
-            // Crear número del botón
+        // Limpiar el contenedor para evitar duplicados
+        container.empty();
+
+        for (let i = 0; i < totalButtons; i++) {
             const number = String(i).padStart(5, '0'); // Asegurar que tenga 5 cifras
             const button = $("<button class='button'>" + number + "</button>");
 
-            // Simular lectura de base de datos y marcar aleatoriamente
-            const isMarked = Math.random() > 0.5; // 50% de probabilidad de estar marcado
-            if (isMarked) {
+            if (occupiedNumbers.has(i)) {
                 button.addClass('occupied');
             } else {
                 button.addClass('available');
-                // Añadir evento de clic para botones no marcados
-                button.on('click', () => toggleSelection(number, button));
+                button.on('click', function() {
+                    toggleSelection(number, button);
+                });
             }
 
             container.append(button);
         }
     }
 
-    // Función para alternar la selección del botón
     function toggleSelection(number, button) {
         const list = $("#number-list");
         const existingItem = list.children().filter(function() {
@@ -30,16 +52,23 @@ $(document).ready(function() {
         });
 
         if (button.hasClass('selected')) {
-            // Deseleccionar
             button.removeClass('selected');
             existingItem.remove();
         } else {
-            // Seleccionar
-            button.addClass('selected');
-            $("<li>" + number + "</li>").appendTo(list);
+            if (existingItem.length === 0) {
+                button.addClass('selected');
+                const listItem = $("<li>" + number + "</li>");
+                listItem.on('click', function() {
+                    $(this).remove();
+                    button.removeClass('selected');
+                    if (list.children().length === 0) {
+                        $("#selected-numbers-footer").removeClass('show');
+                    }
+                });
+                listItem.appendTo(list);
+            }
         }
 
-        // Mostrar el bottom sheet si hay elementos seleccionados
         if (list.children().length > 0) {
             $("#selected-numbers-footer").addClass('show');
         } else {
@@ -47,47 +76,103 @@ $(document).ready(function() {
         }
     }
 
-    // Evento para el cuadro de texto (buscador de números)
     $("#search-input").on("input", function(event) {
         const searchTerm = $(this).val();
         // Aquí puedes agregar la lógica para buscar el término en los números disponibles
     });
 
-    // Evento para el botón de apartar número
     $("#reserve-button").on("click", function(event) {
-        const selectedNumbers = $("#number-list").children().map(function() {
-            return $(this).text();
-        }).get();
+        const numberToReserve = $("#search-input").val().padStart(5, '0');
+        if (occupiedNumbers.has(parseInt(numberToReserve))) {
+            alert("El número ya está ocupado.");
+            return;
+        }
 
-        // Ejemplo de lógica para apartar números
-        const numberToReserve = $("#search-input").val();
-        if (selectedNumbers.includes(numberToReserve)) {
-            alert("El número ya está apartado.");
+        const list = $("#number-list");
+        const existingItem = list.children().filter(function() {
+            return $(this).text() === numberToReserve;
+        });
+
+        if (existingItem.length === 0) {
+            const button = $("<button class='button available selected'>" + numberToReserve + "</button>");
+            button.on('click', function() {
+                toggleSelection(numberToReserve, button);
+            });
+            const listItem = $("<li>" + numberToReserve + "</li>");
+            listItem.on('click', function() {
+                $(this).remove();
+                button.removeClass('selected');
+                if (list.children().length === 0) {
+                    $("#selected-numbers-footer").removeClass('show');
+                }
+            });
+            listItem.appendTo(list);
+
+            if (list.children().length > 0) {
+                $("#selected-numbers-footer").addClass('show');
+            } else {
+                $("#selected-numbers-footer").removeClass('show');
+            }
         } else {
-            alert("Número apartado exitosamente.");
-            // Aquí puedes agregar la lógica para marcar el número como apartado
+            alert("El número ya está en la lista de apartados.");
         }
     });
 
-    // Evento para mostrar el formulario al hacer clic en "Apartar Boletos"
     $("#show-form-button").on("click", function(event) {
         $("#reservation-form").show();
     });
 
-    // Evento para cerrar el formulario
     $("#close-form").on("click", function(event) {
         $("#reservation-form").hide();
     });
 
-    // Evento para cerrar el bottom sheet
     $("#close-footer").on("click", function(event) {
         $("#selected-numbers-footer").removeClass('show');
     });
 
-    // Generar 5000 botones como ejemplo
-    generateButtons(50001);
+    $("#reservation-form form").on("submit", function(event) {
+        event.preventDefault();
+        
+        const name = $("#name").val();
+        const phone = $("#phone").val();
+        const selectedNumbers = $("#number-list").children().map(function() {
+            return $(this).text();
+        }).get();
+        const rifaId = 1; // Ajusta el rifaId según sea necesario
 
-     // Cargar los países y estados al inicializar
-     populateCountries("country", "state");
-     populateStates("country", "state");
+        if (selectedNumbers.length === 0) {
+            alert("Por favor, seleccione al menos un número.");
+            return;
+        }
+
+        $.ajax({
+            url: 'backend/saveOrder.php',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                personName: name,
+                personPhone: phone,
+                numeros: selectedNumbers,
+                rifaId: rifaId
+            }),
+            success: function(response) {
+                if (response.success) {
+                    alert("¡Número(s) apartado(s) exitosamente!");
+                    $("#reservation-form").hide();
+                } else {
+                    alert("Error: " + response.message);
+                }
+            },
+            error: function(error) {
+                alert("Error: No se pudo completar la solicitud.");
+                console.error(error);
+            }
+        });
+    });
+
+    // Obtener los números ocupados y pendientes antes de generar los botones
+    fetchOccupiedNumbers().then(() => {
+        // Generar todos los botones
+        generateButtons();
+    });
 });
