@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa App</title>
+    <style>
+        #numeros-lista {
+            margin-top: 20px;
+        }
+        #numeros-lista ul {
+            list-style-type: none;
+        }
+        #numeros-lista li {
+            margin: 5px 0;
+        }
+        #validation-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rifa App</h1>
+    <label for="rifaId">Rifa ID:</label>
+    <input type="text" id="rifaId">
+    <br>
+    <label for="numero">Número:</label>
+    <input type="text" id="numero">
+    <p id="validation-message"></p>
+    <button id="agregarNumeroBtn">Agregar a la lista</button>
+
+    <div>
+        <label for="personName">Nombre:</label>
+        <input type="text" id="personName">
+    </div>
+    <div>
+        <label for="personPhone">Teléfono:</label>
+        <input type="text" id="personPhone">
+    </div>
+
+    <div id="numeros-lista">
+        <h2>Números seleccionados</h2>
+        <ul id="lista">
+            <!-- Números agregados aparecerán aquí -->
+        </ul>
+    </div>
+
+    <button id="guardarNumerosBtn">Guardar en la base de datos</button>
+
+    <script>
+        (function() {
+            const numeros = [];
+            let rifaId = 0;
+            let debounceTimeout;
+            let currentRequestController = null;
+
+            document.getElementById('agregarNumeroBtn').addEventListener('click', agregarNumero);
+            document.getElementById('numero').addEventListener('input', function() {
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(validarNumero, 300); // 300ms delay for debounce
+            });
+            document.getElementById('numero').addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    agregarNumero();
+                }
+            });
+            document.getElementById('guardarNumerosBtn').addEventListener('click', guardarNumeros);
+
+            function validarNumero() {
+                const numeroInput = document.getElementById('numero');
+                const numero = parseInt(numeroInput.value, 10);
+                const validationMessage = document.getElementById('validation-message');
+                rifaId = parseInt(document.getElementById('rifaId').value, 10);
+
+                if (isNaN(numero) || numero <= 0) {
+                    validationMessage.textContent = 'Por favor, ingresa un número positivo.';
+                    validationMessage.style.color = 'red';
+                    return;
+                }
+
+                if (isNaN(rifaId) || rifaId <= 0) {
+                    validationMessage.textContent = 'Por favor, ingresa un ID de rifa válido.';
+                    validationMessage.style.color = 'red';
+                    return;
+                }
+
+                // Cancel previous request if any
+                if (currentRequestController) {
+                    currentRequestController.abort();
+                }
+
+                // Create a new AbortController
+                currentRequestController = new AbortController();
+                const signal = currentRequestController.signal;
+
+                fetch('checkNumber.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ numero: numero, rifaId: rifaId }),
+                    signal: signal
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.available) {
+                        validationMessage.textContent = 'Número disponible.';
+                        validationMessage.style.color = 'green';
+                    } else {
+                        validationMessage.textContent = data.message || 'El número ya está reservado en una orden pendiente de pago o es reciente.';
+                        validationMessage.style.color = 'red';
+                    }
+                })
+                .catch(error => {
+                    if (error.name !== 'AbortError') {
+                        validationMessage.textContent = 'Error al verificar el número.';
+                        validationMessage.style.color = 'red';
+                    }
+                });
+            }
+
+            function agregarNumero() {
+                const numeroInput = document.getElementById('numero');
+                const numero = parseInt(numeroInput.value, 10);
+                rifaId = parseInt(document.getElementById('rifaId').value, 10);
+                const validationMessage = document.getElementById('validation-message');
+
+                if (isNaN(rifaId) || rifaId <= 0) {
+                    alert('Por favor, ingresa un ID de rifa válido.');
+                    return;
+                }
+
+                fetch('checkNumber.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ numero: numero, rifaId: rifaId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.available) {
+                        numeros.push(numero);
+                        numeroInput.value = '';
+                        validationMessage.textContent = '';
+                        actualizarLista();
+                    } else {
+                        alert(data.message || 'El número ya está reservado en una orden pendiente de pago o es reciente.');
+                    }
+                })
+                .catch(error => console.log('Error: ', error));
+            }
+
+            function actualizarLista() {
+                const lista = document.getElementById('lista');
+                lista.innerHTML = '';
+                numeros.forEach(num => {
+                    const li = document.createElement('li');
+                    li.textContent = num;
+                    lista.appendChild(li);
+                });
+            }
+
+            function guardarNumeros() {
+                const personName = document.getElementById('personName').value;
+                const personPhone = document.getElementById('personPhone').value;
+
+                if (numeros.length === 0) {
+                    alert('No hay números para guardar.');
+                    return;
+                }
+
+                if (!personName || !personPhone) {
+                    alert('Por favor, ingresa tu nombre y teléfono.');
+                    return;
+                }
+
+                const data = {
+                    personName: personName,
+                    personPhone: personPhone,
+                    numeros: numeros,
+                    rifaId: rifaId
+                };
+
+                fetch('saveOrder.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Números y orden guardados exitosamente.');
+                        numeros.length = 0;
+                        actualizarLista();
+                    } else {
+                        alert('Error al guardar los números.');
+                    }
+                })
+                .catch(error => console.log('Error: ', error));
+            }
+        })();
+    </script>
+</body>
+</html>
