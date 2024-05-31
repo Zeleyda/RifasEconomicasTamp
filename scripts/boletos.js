@@ -1,11 +1,29 @@
 $(document).ready(function() {
     let totalButtons = 1000; // Ajustar a 1000 botones
     let occupiedNumbers = new Set();
+    let rifaId;
+
+    // Función para obtener el ID de la última rifa
+    function fetchLastRifaId() {
+        return $.ajax({
+            url: 'backend/getLastRifaId.php', // Ruta al archivo PHP que obtiene el último RifaId
+            method: 'GET',
+            dataType: 'json'
+        }).then(response => {
+            if (response.success) {
+                rifaId = response.rifaId;
+            } else {
+                console.error('Error fetching last rifaId:', response.message);
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    }
 
     // Función para obtener los números ocupados y pendientes desde el servidor
     function fetchOccupiedNumbers() {
         return $.ajax({
-            url: 'backend/getOccupiedNumbers.php?rifaId=1', // Asegúrate de ajustar el rifaId según sea necesario
+            url: 'backend/getOccupiedNumbers.php?rifaId=' + rifaId, // Usar el rifaId obtenido
             method: 'GET',
             dataType: 'json'
         }).then(response => {
@@ -138,7 +156,6 @@ $(document).ready(function() {
         const selectedNumbers = $("#number-list").children().map(function() {
             return $(this).text();
         }).get();
-        const rifaId = 1; // Ajusta el rifaId según sea necesario
 
         if (selectedNumbers.length === 0) {
             alert("Por favor, seleccione al menos un número.");
@@ -153,14 +170,14 @@ $(document).ready(function() {
                 personName: name,
                 personPhone: phone,
                 numeros: selectedNumbers,
-                rifaId: rifaId
+                rifaId: rifaId // Usar el rifaId obtenido
             }),
             success: function(response) {
                 if (response.success) {
                     alert("¡Número(s) apartado(s) exitosamente!");
                     $("#reservation-form").hide();
                 } else {
-                    alert("Error: " + response.message);
+                    alert("Error saveOrder: " + response.message);
                 }
             },
             error: function(error) {
@@ -170,9 +187,10 @@ $(document).ready(function() {
         });
     });
 
-    // Obtener los números ocupados y pendientes antes de generar los botones
-    fetchOccupiedNumbers().then(() => {
-        // Generar todos los botones
+    // Obtener el ID de la última rifa, luego los números ocupados y finalmente generar los botones
+    fetchLastRifaId().then(() => {
+        return fetchOccupiedNumbers();
+    }).then(() => {
         generateButtons();
     });
 });
