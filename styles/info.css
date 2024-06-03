@@ -1,0 +1,104 @@
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width */
+    flex: 1; /* Ensure it takes available space */
+    margin: 0 auto; /* Center the container */
+    width: 100%; /* Ensure full width */
+}
+
+.info-box {
+    background-color: white;
+    width: 80%;
+    max-width: 1100px; /* Adjust max-width for better design */
+    margin: 10px 0;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width */
+    text-align: left;
+    border: 2px solid transparent; /* To ensure the background doesn't cut off the border-radius */
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+
+.payment-box {
+    max-width: 1100px; /* Set the max-width to 1100px */
+}
+
+.info-box h3 {
+    margin-top: 0;
+}
+
+.info-box p {
+    margin: 10px 0;
+}
+
+.info-box .info-image {
+    align-self: flex-end;
+    width: 150px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.info-box::before {
+    content: "";
+    width: 100%;
+    height: 10px;
+    background-color: green;
+    position: absolute;
+    top: -10px; /* Position above the container */
+    left: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.info-title {
+    
+    font-size: 2em;
+    margin-bottom: 40px;
+    color: #000000;
+    text-align: center;
+}
+
+.payment-method {
+ 
+    padding: 20px;
+   
+   
+    text-align: left;
+}
+
+.payment-method h3 {
+    
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.bbva-logo {
+    width: 100px;
+    margin: 20px 0;
+}
+
+.payment-method p {
+    font-size: 1.1em;
+}
+
+@media (max-width: 480px) {
+    .info-box {
+        width: 100%;
+        padding: 10px;
+    }
+    .info-box .info-image {
+        width: 100%;
+        height: auto;
+    }
+}

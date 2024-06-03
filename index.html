@@ -3,36 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rifa Entre Amigos</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles/styles.css">
+    <title>Responsive Page with Sticky Footer</title>
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/carousel.css">
-    <link rel="stylesheet" href="styles/payment-methods.css">
+    <link rel="stylesheet" href="styles/info.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/boletos.css">
+    <link rel="stylesheet" href="styles/background.css">
 </head>
 <body>
-    <div id="content-wrapper">
-        <div id="navbar-container"></div>
-        <div id="carousel-container"></div>
-        <div id="about-container"></div>
-        <div id="rifas-container"></div>
-        <div id="faq-container"></div>
-        <div id="payment-methods-container"></div>
-        <div id="cuentas-container" style="display: none;"></div>
-        <div id="comprar-boletos-container" style="display: none;"></div>
+    <div class="background-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
+        <nav class="navbar">
+            <div class="brand-title">
+                <img src="images/LOGO.png" alt="Logo"> <!-- Replace 'path_to_logo_image' with the actual path to the logo image -->
+                
+            </div>
+            
+            <a href="javascript:void(0);" class="toggle-button" onclick="toggleMenu()">
+                &#9776;
+            </a>
+            <div class="navbar-links" id="navbarLinks">
+                <ul>
+                    <li><a href="#inicio" onclick="showSection('inicio')">INICIO</a></li>
+                    <li><a href="#info1" onclick="showSection('info1')">CUENTAS</a></li>
+                    <li><a href="#info2" onclick="showSection('info2')">VERIFICADOR</a></li>
+                    <li><a href="#info3" onclick="showSection('info3')">COMPRAR BOLETOS</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main-container" id="mainContainer">
+            <div class="carousel-container" id="carouselContainer">
+                <div class="carousel">
+                    <div class="slide"><img src="images/camioneta1.jpg" alt="Slide 1"></div>
+                    <div class="slide"><img src="images/camioneta2.jpg" alt="Slide 2"></div>
+                    <div class="slide"><img src="images/camioneta3.jpg" alt="Slide 3"></div>
+                </div>
+                <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
+
+            <h2 class="info-title" id="info1-title">¿QUIENES SOMOS?</h2>
+            <div class="info-container" id="info5-container">
+                <div class="info-box" id="info00">
+                    <h3>RIFAS ECONOMICAS TAMPICO</h3>
+                    <p>¡Bienvenidos! a <em>Rifas ECONOMICAS TAMPICO</em>, realizamos sorteos en base a la Lotería Nacional, en nuestros sorteos participan amigos de todo México, estamos ubicados en Tampico Tamaulipas.</p>
+                    <img src="images/LOGO.png" alt="Logo Rifa entre amigos" class="info-image">
+                </div>
+            </div>
+
+            <h2 class="info-title" id="info2-title">PREGUNTAS FRECUENTES</h2>
+            <div class="info-container" id="info2-container">
+                <div class="info-box" id="info2">Información 2</div>
+            </div>
+
+            <h2 class="info-title" id="info3-title">SE VA 1 VEHÍCULO 1 GANADOR </h2>
+            <div class="info-container" id="info3-container">
+                <div class="info-box" id="info3">Información 3</div>
+            </div>
+
+            <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
+            <div class="info-container" id="info1-container">
+                <div class="info-box payment-box" id="info1">
+                    <div class="payment-method">
+                        <h3>Depósito OXXO o Transferencia</h3>
+                        <img src="images/bbva.png" alt="BBVA Logo" class="bbva-logo">
+                        <p><strong>Tarjeta:</strong> 4152 3136 7897 7070</p>
+                        <p><strong>Beneficiario:</strong> ERICK EDUARDO CASTRO MARCELINO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <h2>Contáctenos</h2>
+                <p><i class="fa fa-whatsapp"></i> (833) 339 9875</p>
+                <p><i class="fa fa-whatsapp"></i> (833) 330 1858</p>
+                <p><i class="fa fa-whatsapp"></i> (833) 531 0918</p>
+                
+                <p><a href="#">Aviso de Privacidad</a> | <a href="#">Términos y condiciones</a></p>
+                <p>Copyright © 2024 a <strong>RIFAS ECONOMICAS TAMPICO</strong>.</p>
+                <p>Administrado por ND & CR</p>
+        </footer>
     </div>
-    <div id="footer-container"></div> <!-- Contenedor del footer -->
 
-    <!-- Bootstrap JS y dependencias -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- JS personalizado -->
-    <script src="js/modules.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/info.js"></script>
 </body>
 </html>
-

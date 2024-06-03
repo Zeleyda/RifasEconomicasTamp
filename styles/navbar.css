@@ -1,122 +1,107 @@
-/* Estilos generales */
-body, html {
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-body {
-    background: url('images/background.jpg') no-repeat center center fixed;
-    background-size: cover;
-    position: relative;
-}
-
-body::before {
-    content: '';
-    position: absolute;
+.navbar {
+    position: fixed;
+    padding: 20px 30px;
+    height: 100px;
     top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000; /* Fixed color */
+    padding: 15px 20px; /* More padding for a wider appearance */
+    z-index: 1000; /* Ensure the navbar stays on top of other content */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.brand-title {
+    font-size: 1.8em; /* Larger font size */
+    color: white;
+}
+
+.brand-title img {
+    height: 90px; /* Adjust height for the logo */
+    margin-right: 10px; /* Space between logo and text */
+}
+.navbar-links {
+    display: none; /* Hide by default */
+    position: fixed; /* Fixed position */
+    top: 100px; /* Position below navbar */
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo gris con opacidad */
-    z-index: -1;
+    background-color: #000000; /* Same color as navbar */
+    z-index: 999; /* Slightly below navbar */
+    box-sizing: border-box; /* Include padding in width */
 }
 
-/* Colores del navbar */
-.navbar {
-    background-color: #000000; /* Color de fondo negro */
-    padding-top: 1rem; /* Ajusta la altura del navbar */
-    padding-bottom: 1rem; /* Ajusta la altura del navbar */
-    font-size: 1.25rem; /* Ajusta el tamaño del texto */
-    border-bottom: 5px solid #228B22; /* Franja verde en la parte inferior */
-    position: fixed; /* Fija el navbar en la parte superior */
-    top: 0;
+.navbar-links ul {
+    display: flex;
+    flex-direction: column; /* Column direction for responsiveness */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.navbar-links li {
+    margin: 10px 0; /* Margin for vertical spacing */
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 20px; /* Padding for better clickability */
+    display: block;
+}
+
+.toggle-button {
+    display: block; /* Display the toggle button */
+    font-size: 1.5em;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .navbar-links {
+        display: flex !important; /* Display flex for larger screens */
+        position: static; /* Default position */
+        flex-direction: row; /* Row direction for larger screens */
+        justify-content: flex-end;
+        width: auto;
+        background-color: transparent; /* Remove background color */
+    }
+    .navbar-links ul {
+        flex-direction: row; /* Row direction for larger screens */
+    }
+    .navbar-links li {
+        margin: 0 15px; /* Margin for horizontal spacing */
+    }
+    .navbar-links a {
+        padding: 0; /* Remove padding */
+    }
+    .toggle-button {
+        display: none; /* Hide the toggle button for larger screens */
+    }
+}
+
+.main-container {
+    flex: 1;
+    margin-top: 80px; /* Adjust based on navbar height to prevent content overlap */
     width: 100%;
-    z-index: 1030; /* Asegura que el navbar esté sobre otros elementos */
-    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total del elemento */
-    transition: top 0.3s ease; /* Transición suave para el desplazamiento */
+    box-sizing: border-box; /* Include padding in width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
 }
 
-/* Estilo del logo */
-.logo {
-    height: 80px; /* Ajusta el tamaño del logotipo */
-    
-    position: static;
-    top: 50%;
-    left: 20px; /* Ajusta este valor según sea necesario */
-    transform: translateY(-0%);
-    z-index: 1031; /* Asegura que el logotipo esté sobre el navbar */
-}
-
-/* Este bloque es para el comportamiento del navbar en móviles */
-@media (max-width: 991.98px) {
-    .navbar{
-
-        padding-top: 1rem; /* Ajusta la altura del navbar en móvil si es necesario */
-        padding-bottom: 1rem;
-    }
-    .navbar-collapse {
-        background-color: #000000; /* Color de fondo negro */
-        padding: 1rem; /* Espacio dentro del menú */
-    }
-
-
-    .navbar-toggler {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .navbar-toggler-icon {
-        margin-right: 10px;
-    }
-
-    .menu-text {
-        color: #ffffff; /* Color del texto "Menú" */
-        font-size: 1.25rem; /* Tamaño del texto */
-    }
-
-    .nav-item {
-        border-bottom: 1px solid #fff; /* Separador blanco entre opciones */
-    }
-
-    .nav-link {
-        color: #ffffff; /* Color del texto de los links */
-        font-size: 1.25rem; /* Tamaño del texto */
-    }
-}
-
-/* Ajustes para asegurar que las opciones del navbar sean visibles en escritorio */
-@media (min-width: 992px) {
-    .navbar-collapse {
-        display: flex !important;
-    }
-
-    .navbar-nav {
-        font-size: 1.25rem; /* Aumenta el tamaño del texto */
-        margin-left: auto; /* Empuja el menú a la izquierda */
-        margin-right: 10%; /* Ajusta la posición a la izquierda */
-    }
-
-    .navbar-nav .nav-item .nav-link {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-.navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28%255, %255, %255, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-.navbar-shrink {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom-width: 3px; /* Ajusta el grosor de la franja verde al reducir el tamaño */
-    top: -20px; /* Ajusta este valor según sea necesario */
-}
