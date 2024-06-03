@@ -1,7 +1,54 @@
-.faq-container .accordion-button:not(.collapsed) {
-    box-shadow: none;
+#faq-container {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-top: 4px solid green;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px 8px 0 0;
 }
 
-.faq-container .accordion-button:focus {
-    box-shadow: none;
+#faq-container h1 {
+    color: green;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+.accordion-button {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.accordion-body {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Media queries para ajustar el tamaño de fuente y el diseño en vistas móviles */
+@media (max-width: 768px) {
+    #faq-container {
+        width: 100%;
+        margin-top: 5%;
+        padding: 10px;
+    }
+
+    #faq-container h1 {
+        font-size: 6vw;
+    }
+
+    .accordion-button {
+        font-size: 4.5vw;
+    }
+
+    .accordion-body {
+        font-size: 3vw;
+    }
 }

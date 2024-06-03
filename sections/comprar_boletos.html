@@ -4,51 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprar Boletos</title>
-    <link rel="stylesheet" href="styles/boletos.css">
+  
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="title-boletos">Comprar Boletos</h1>
 
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="Buscar un número entre el 0 y el 50000">
-            <button id="reserve-button">Apartar número</button>
+
+    <div>
+        <h1>Comprar Boletos</h1>
+        <div>
+            <input type="text" placeholder="Buscar un número entre el 0 y el 50000">
+            <button>Apartar número</button>
         </div>
 
-        <div id="buttons-container"></div>
+        <div></div>
     </div>
 
-    <div id="selected-numbers-footer">
-        <button id="close-footer">X</button>
-        <h3 class="title-boletos">Números seleccionados:</h3>
-        <ul id="number-list"></ul>
-        <button id="show-form-button">Apartar Boletos</button>
+
+
+    <div>
+        <button>X</button>
+        <h3>Números seleccionados:</h3>
+        <ul></ul>
+        <button>Apartar Boletos</button>
     </div>
 
-    <div id="reservation-form" class="form-container">
-        <button id="close-form">X</button>
+
+
+    <div>
+        <button>X</button>
         <h3>LLENA TUS DATOS Y DA CLICK EN APARTAR</h3>
         <form>
             <label for="name">Nombre Completo</label>
-            <input type="text" id="name" placeholder="Nombre y Apellidos">
+            <input type="text" placeholder="Nombre y Apellidos">
             <label for="states-toggle">Cargar Estados de USA</label>
-            <input type="checkbox" id="states-toggle">
+            <input type="checkbox">
             <label for="state">Estado</label>
             <select id="state">
                 <option value="">Seleccionar...</option>
             </select>
             <label for="phone">Número de Celular (WhatsApp)</label>
-            <input type="text" id="phone" placeholder="10 dígitos sin espacios">
-            <p>¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!</p>
+            <input type="text" placeholder="10 dígitos sin espacios">
+            <p>¡Al finalizar serás redirigido a WhatsApp para enviar la información de tu boleto!</p>
             <p>Tu boleto sólo dura 24 horas apartado</p>
             <button type="submit">Apartar Boleto</button>
         </form>
     </div>
 
-    <script src="scripts/jquery.min.js"></script>
+
+    
     <script src="scripts/boletos.js"></script>
-    <script src="scripts/qrcode.min.js"></script>
-    <script src="https://www.geodatasource.com/javascript/countries.js"></script>
+
 
 </body>
 </html>

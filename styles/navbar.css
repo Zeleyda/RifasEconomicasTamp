@@ -1,38 +1,122 @@
-.custom-navbar {
-    background-color: rgb(0, 0, 0);
-    padding: 50px 50px; /* Aumentar el padding para incrementar el tamaño del navbar */
-    border-top: 30px solid rgb(56, 118, 29);
-    border-bottom: 30px solid rgb(56, 118, 29);
-    height: 160px; /* Ajusta automáticamente la altura del navbar según el contenido */
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
 }
 
-.navbar-brand {
-    color: #000000 !important;
-    font-size: 40px;
+body {
+    background: url('images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
 }
 
-.navbar-nav {
-    margin-right: 100px;
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo gris con opacidad */
+    z-index: -1;
 }
 
-.nav-link {
-    color: #000000 !important;
-    margin-left: 10px;
-    font-size: 18px; /* Ajusta el tamaño de fuente aquí */
+/* Colores del navbar */
+.navbar {
+    background-color: #000000; /* Color de fondo negro */
+    padding-top: 1rem; /* Ajusta la altura del navbar */
+    padding-bottom: 1rem; /* Ajusta la altura del navbar */
+    font-size: 1.25rem; /* Ajusta el tamaño del texto */
+    border-bottom: 5px solid #228B22; /* Franja verde en la parte inferior */
+    position: fixed; /* Fija el navbar en la parte superior */
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Asegura que el navbar esté sobre otros elementos */
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el tamaño total del elemento */
+    transition: top 0.3s ease; /* Transición suave para el desplazamiento */
+}
+
+/* Estilo del logo */
+.logo {
+    height: 80px; /* Ajusta el tamaño del logotipo */
+    
+    position: static;
+    top: 50%;
+    left: 20px; /* Ajusta este valor según sea necesario */
+    transform: translateY(-0%);
+    z-index: 1031; /* Asegura que el logotipo esté sobre el navbar */
+}
+
+/* Este bloque es para el comportamiento del navbar en móviles */
+@media (max-width: 991.98px) {
+    .navbar{
+
+        padding-top: 1rem; /* Ajusta la altura del navbar en móvil si es necesario */
+        padding-bottom: 1rem;
+    }
+    .navbar-collapse {
+        background-color: #000000; /* Color de fondo negro */
+        padding: 1rem; /* Espacio dentro del menú */
+    }
+
+
+    .navbar-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar-toggler-icon {
+        margin-right: 10px;
+    }
+
+    .menu-text {
+        color: #ffffff; /* Color del texto "Menú" */
+        font-size: 1.25rem; /* Tamaño del texto */
+    }
+
+    .nav-item {
+        border-bottom: 1px solid #fff; /* Separador blanco entre opciones */
+    }
+
+    .nav-link {
+        color: #ffffff; /* Color del texto de los links */
+        font-size: 1.25rem; /* Tamaño del texto */
+    }
+}
+
+/* Ajustes para asegurar que las opciones del navbar sean visibles en escritorio */
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: flex !important;
+    }
+
+    .navbar-nav {
+        font-size: 1.25rem; /* Aumenta el tamaño del texto */
+        margin-left: auto; /* Empuja el menú a la izquierda */
+        margin-right: 10%; /* Ajusta la posición a la izquierda */
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-toggler-icon {
-    filter: invert(1);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28%255, %255, %255, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-@media (min-width: 768px) {
-    .navbar {
-        padding: 50px 50px; /* Aumentar el padding para incrementar el tamaño del navbar */
-    }
-}
-
-@media (min-width: 1200px) {
-    .navbar-xl {
-        height: 160px; /* Ajusta la altura del navbar para pantallas grandes */
-    }
+.navbar-shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom-width: 3px; /* Ajusta el grosor de la franja verde al reducir el tamaño */
+    top: -20px; /* Ajusta este valor según sea necesario */
 }

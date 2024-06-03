@@ -1,4 +1,10 @@
+/* Ajustes para dispositivos móviles */
 .carousel {
-    margin-top: 0; /* Elimina el margen superior del carrusel */
-    padding-top: 0; /* Elimina el padding superior del carrusel */
+    margin-top: 4%;
+}
+
+@media (max-width: 991.98px) {
+    .carousel {
+        margin-top: 120px; /* Ajusta este valor según la altura de tu navbar en vista móvil */
+    }
 }
