@@ -23,3 +23,102 @@ body {
     text-align: center;
     padding: 1em 0;
 }
+
+.main-title {
+    font-size: 2em;
+    color: #4CAF50;
+    margin-bottom: 1em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.card.prize-card {
+    margin: 1em 0;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 2em;
+}
+
+.card-body h5 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.card-body p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.faq-container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item {
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-header {
+    background: #007bff;
+    color: white;
+}
+
+.accordion-button {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background: #0056b3;
+    color: white;
+}
+
+.accordion-button:not(.collapsed) {
+    background: #0056b3;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-body {
+    background: #ffffff;
+    padding: 20px;
+    border-top: 1px solid #dee2e6;
+    color: #495057;
+}
+
+@media (max-width: 768px) {
+    .faq-container {
+        padding: 15px;
+    }
+
+    .main-title {
+        font-size: 1.5em;
+    }
+
+    .accordion-button {
+        padding: 10px;
+    }
+
+    .accordion-body {
+        padding: 15px;
+    }
+}
