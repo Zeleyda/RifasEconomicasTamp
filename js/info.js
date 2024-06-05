@@ -129,3 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar todas las secciones al cargar para la sección "Inicio"
     showSection('inicio');
 });
+

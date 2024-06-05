@@ -92,6 +92,99 @@
     font-size: 1.1em;
 }
 
+
+/* Estilo para el contenedor principal del vehículo */
+.vehicle-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-top: 4px solid green;
+    padding: 20px;
+}
+
+/* Estilo para la imagen del vehículo */
+.vehicle-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* Estilo para los detalles del vehículo */
+.vehicle-details h2 {
+    color: green;
+    margin: 10px 0;
+}
+
+/* Estilo para la información de precios */
+.pricing-info {
+    background: green;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilo para el botón de compra */
+.buy-button {
+    background: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+
+/* Estilos para el acordeón */
+.accordion {
+    width: 100%;
+}
+
+.accordion-item {
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.accordion-item:first-child {
+    border-top: 1px solid #ccc;
+}
+
+.accordion-button {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+}
+
+.accordion-button::after {
+    content: '\25BC';
+    float: right;
+}
+
+.accordion-button.active::after {
+    content: '\25B2';
+}
+
+
+
+
+
+
 @media (max-width: 480px) {
     .info-box {
         width: 100%;
@@ -102,3 +195,4 @@
         height: auto;
     }
 }
+
