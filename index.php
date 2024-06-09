@@ -22,9 +22,24 @@
         <div class="main-container" id="mainContainer">
             <div class="carousel-container" id="carouselContainer">
                 <div class="carousel">
-                    <div class="slide"><img src="images/camioneta1.jpg" alt="Slide 1"></div>
-                    <div class="slide"><img src="images/camioneta2.jpg" alt="Slide 2"></div>
-                    <div class="slide"><img src="images/camioneta3.jpg" alt="Slide 3"></div>
+
+                    <div class="slide">
+                       <img src="images/camioneta1.jpg" alt="Slide 1">
+                    <button class="buy-button">COMPRAR BOLETO</button>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/camioneta2.jpg" alt="Slide 2">
+                        <button class="buy-button">COMPRAR BOLETO</button>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/camioneta3.jpg" alt="Slide 3" >
+                        <button class="buy-button">COMPRAR BOLETO</button>
+
+                        
+                    </div>
+                    
                 </div>
                 <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
                 <button class="next" onclick="moveSlide(1)">&#10095;</button>
