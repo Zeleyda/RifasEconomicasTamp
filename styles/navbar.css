@@ -26,12 +26,13 @@ body {
 }
 
 .brand-title {
+  
     font-size: 1.8em; /* Larger font size */
     color: white;
 }
 
 .brand-title img {
-    height: 90px; /* Adjust height for the logo */
+    height: 140px; /* Adjust height for the logo */
     margin-right: 10px; /* Space between logo and text */
 }
 
