@@ -27,8 +27,8 @@ body {
 
 .brand-title {
   
-    font-size: 1.8em; /* Larger font size */
-    color: white;
+    font-size: 0; /* Larger font size */
+    color: rgb(0, 0, 0);
 }
 
 .brand-title img {

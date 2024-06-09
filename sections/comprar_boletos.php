@@ -55,6 +55,6 @@
     
     <script src="scripts/boletos.js"></script>
 
-
+    <?php include 'footer.html'; ?>
 </body>
 </html>
