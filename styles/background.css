@@ -12,15 +12,15 @@ body, html {
     position: fixed;
     height: 100%;
     width: 100%;
-    z-index: -2;
+    z-index: -2; /* Ensure the background is behind the overlay */
 }
 
 .overlay {
-    background-color: rgb(192, 192, 192); /* Light grey with 50% opacity */
+    background-color: rgba(58, 56, 56, 0.927); /* Light grey with 50% opacity */
     position: fixed;
     height: 100%;
     width: 100%;
-    z-index: -1;
+    z-index: -1; /* Ensure the overlay is above the background image but below the content */
 }
 
 .content {

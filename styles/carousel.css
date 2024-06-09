@@ -1,6 +1,7 @@
 .carousel-container {
     position: relative;
     max-width: 100%;
+    padding-top: 60px;
     margin: 20px auto;
     overflow: hidden;
     box-sizing: border-box; /* Include padding in width */

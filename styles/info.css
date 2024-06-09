@@ -10,6 +10,13 @@
     width: 100%; /* Ensure full width */
 }
 
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+
 .info-box {
     background-color: white;
     width: 80%;
@@ -63,7 +70,7 @@
     
     font-size: 2em;
     margin-bottom: 40px;
-    color: #000000;
+    color: #ffffff;
     text-align: center;
 }
 
