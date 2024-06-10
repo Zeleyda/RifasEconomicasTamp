@@ -1,30 +1,52 @@
-/* Estilos generales para el contenedor */
+/* Estilos generales para el body y html */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
 
+/* Flex container */
+.flex-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px; /* Ajusta según la altura del navbar */
+    padding-bottom: 60px; /* Ajusta según la altura del footer */
+}
 
+/* Contenedor principal */
 .container {
     background-color: #474343;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 100%; /* El contenedor ocupa todo el ancho disponible */
-    margin: 0 auto; /* Centrar el contenedor */
+    width: 600px; /* Ancho fijo */
+    max-width: 90%; /* Ajustar para pantallas más pequeñas */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     overflow: auto; /* Agregar scroll si el contenido excede el tamaño del contenedor */
+    display: flex; /* Flexbox para centrar verticalmente */
+    flex-direction: column; /* Apilar los hijos verticalmente */
+    align-items: center; /* Centrar horizontalmente */
 }
-
 
 /* Estilo para el título principal */
 .main-title {
     text-align: center;
     margin-bottom: 20px;
-   
+    color: white;
 }
 
+/* Estilo para el título de boletos */
 .title-boletos {
     text-align: center;
     margin-bottom: 20px;
     color: black;
 }
-
 
 /* Estilos para el contenedor de búsqueda */
 #search-container {
@@ -33,7 +55,6 @@
     align-items: center;
     margin-bottom: 20px;
     gap: 10px;
-
 }
 
 #search-input {
@@ -66,14 +87,14 @@
 
 /* Estilos generales para los botones */
 #buttons-container {
-    display: grid; /* Cambiar a diseño de cuadrícula */
-    grid-template-columns: repeat(12, 1fr); /* 12 columnas con ancho igual */
-    gap: 5px; /* Espacio entre los botones */
+    display: flex; /* Cambiar a diseño flex */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en la siguiente línea */
+    justify-content: center; /* Centrar los botones horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
 }
 
 .button {
     padding: 10px; /* Relleno para el botón */
-    width: 100%; /* Tamaño del botón flexible */
     text-align: center; /* Centrar texto */
     background-color: green; /* Color predeterminado para botones disponibles */
     color: white; /* Color del texto */
@@ -94,8 +115,12 @@
 
 /* Ajustes para pantallas más pequeñas */
 @media (max-width: 768px) {
+    .container {
+        width: 90%; /* Ajustar el ancho para pantallas pequeñas */
+    }
     #buttons-container {
-        grid-template-columns: repeat(4, 1fr); /* 4 columnas en pantallas más pequeñas */
+        justify-content: center; 
+        width: 20%;/* Asegurar que los botones estén centrados en pantallas más pequeñas */
     }
 }
 
@@ -121,60 +146,5 @@
 .ticket-container {
     background-color: green;
     color: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
-    box-sizing: border-box; /* Incluye padding y borde en el cálculo del ancho total */
-    margin: 20px 0; /* Margen superior e inferior */
-}
-
-.ticket-price {
-    border: 2px solid #38A52E; /* Bordes verdes */
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #E5F9E7; /* Fondo verde claro */
-}
-
-.ticket-price span {
-    font-weight: bold;
-    color: #38A52E; /* Texto verde */
-}
-
-/* Estilos para el formulario de reserva */
-.form-container {
-    display: none; /* Oculto inicialmente */
-    position: fixed; /* Posición fija para cubrir toda la pantalla */
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.1); /* Fondo semi-transparente */
-    z-index: 2000; /* Asegurar que esté por encima de otros elementos */
-    justify-content: center; /* Centrar contenido horizontalmente */
-    align-items: center; /* Centrar contenido verticalmente */
-}
-
-.form-container form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-}
-
-.form-container button#close-form {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 20px;
+ 
 }

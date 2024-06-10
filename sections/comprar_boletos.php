@@ -10,7 +10,11 @@
 </head>
 <body>
 <?php include 'navbar.html'; ?>
-
+<h3></h3>
+<h3></h3>
+<h3></h3>
+<h3></h3>
+<h3></h3>
 <div class="container">
     <h1 class="main-title">Comprar Boletos</h1>
     <div id="search-container">
@@ -54,7 +58,6 @@
     </form>
 </div>
 
-<script src="/RifasEconomicasTamp/js/boletos.js"></script>
 
 <?php include 'footer.html'; ?>
 </body>
