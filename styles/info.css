@@ -202,6 +202,20 @@
     .info-box .info-image {
         width: 100%;
         height: auto;
+        margin-top: 20px;
+    }
+
+   
+    .pricing-info {
+        width: calc(95% - 30px); /* Ajusta el ancho para compensar el padding */
+        padding: 36px; 
+   
+   
+    }
+    .comprar-boletos-btn {
+        margin-top: 100px;
+        
+        /* Añade un margen superior al botón para separarlo del pricing info */
     }
 }
 

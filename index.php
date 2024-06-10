@@ -35,7 +35,7 @@
 
                     <div class="slide">
                         <img src="images/camioneta3.jpg" alt="Slide 3" >
-                        <button class="buy-button">COMPRAR BOLETO</button>
+                        <button class="buy-button" href="/RifasEconomicasTamp/sections/comprar_boletos.php">COMPRAR BOLETO</button>
 
                         
                     </div>
@@ -99,7 +99,7 @@
                         <p>5 boletos por $150 (25 Oportunidades)</p>
                         <p>10 boletos por $300 (50 Oportunidades)</p>
                     </div>
-                    <button class="buy-button">COMPRAR BOLETO</button>
+                    <button class="buy-button" href="/RifasEconomicasTamp/sections/comprar_boletos.php">COMPRAR BOLETO</button>
                 </div>
             </div>
 

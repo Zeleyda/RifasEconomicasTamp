@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Búsqueda</title>
+    <title>RIFAS ECONOMICAS TAMPICO</title>
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/info.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
