@@ -26,7 +26,6 @@ body {
 }
 
 .brand-title {
-  
     font-size: 0; /* Larger font size */
     color: rgb(0, 0, 0);
 }
@@ -39,12 +38,16 @@ body {
 .navbar-links {
     display: none; /* Hide by default */
     position: fixed; /* Fixed position */
-    top: 125px; /* Position below navbar */
+    top: 137px; /* Position below navbar */
     left: 0;
     width: 100%;
     background-color: #000000; /* Same color as navbar */
     z-index: 999; /* Slightly below navbar */
     box-sizing: border-box; /* Include padding in width */
+}
+
+.navbar-links.shift-down {
+    top: 200px; /* Adjust this value to shift down */
 }
 
 .navbar-links ul {
@@ -69,7 +72,7 @@ body {
 
 .toggle-button {
     display: block; /* Display the toggle button */
-    font-size: 1.5em;
+    font-size: 2.8em;
     color: white;
     background: none;
     border: none;
