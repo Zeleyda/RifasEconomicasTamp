@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/boletos.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/boletos.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
     <title>Comprar Boletos</title>
   
 </head>
 <body>
-
+<?php include 'navbar.html'; ?>
 
     <div>
         <h1>Comprar Boletos</h1>

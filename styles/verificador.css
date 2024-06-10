@@ -9,10 +9,10 @@ body {
 }
 
 .container {
-    width: 60%;
+    width: 40%;
     margin: auto;
     border: 1px solid #ccc;
-    border-top: 50px solid green;
+    border-top:10px solid green;
     padding: 20px;
     text-align: center;
     background-color: white;
@@ -36,7 +36,7 @@ body {
 
 .search-bar input[type="text"] {
     width: 60%;
-    padding: 10px;
+    padding: 70px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
@@ -44,7 +44,7 @@ body {
 }
 
 .search-bar button {
-    padding: 10px;
+    padding: 80px;
     font-size: 16px;
     color: white;
     background-color: green;

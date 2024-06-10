@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Búsqueda</title>
-    <link rel="stylesheet" href="../styles/verificador.css">
-    <link rel="stylesheet" href="../styles/navbar.css">
-    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/verificador.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
 </head>
 <body>
     <?php include 'navbar.html'; ?>
 
-<h3>texto</h3>
-<h3>texto</h3>
-<h3>texto</h3>
+
 <h1>Verificar Boleto</h1>
     <div class="container">
         
