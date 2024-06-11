@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`../backend/getMaxNumbers.php?rifaId=${rifaId}`)
             .then(response => response.json())
             .then(data => {
-                console.log(data.maxNumbers);
                 if (data.success) {
                     maxNumbers = data.maxNumbers;
                     fetchOccupiedNumbers();
@@ -78,19 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         buttonContainer.appendChild(fragment);
     }
-
-    // Event listener for scrolling to render more numbers
-    /*buttonContainer.addEventListener('scroll', () => {
-        const scrollTop = buttonContainer.scrollTop;
-        const clientHeight = buttonContainer.clientHeight;
-        const scrollHeight = buttonContainer.scrollHeight;
-
-        if (scrollTop + clientHeight >= scrollHeight - 100) { // Adjust threshold as needed
-            const startIndex = buttonContainer.children.length + 1;
-            const endIndex = Math.min(startIndex + 49, maxNumbers); // Render next set of numbers
-            renderNumbers(startIndex, endIndex);
-        }
-    });*/
 
     // Function to update selected numbers
     function updateSelectedNumbers() {
@@ -146,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
         const personName = document.getElementById('personName').value;
         const personPhone = document.getElementById('personPhone').value;
+        const estado = document.getElementById('estado').value; // Obtener el valor del estado seleccionado
         const selectedButtons = Array.from(document.querySelectorAll('.ticket-container'));
         const numeros = selectedButtons.map(button => parseInt(button.textContent, 10));
 
@@ -157,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body: JSON.stringify({
                 personName,
                 personPhone,
+                estado, // Incluir el estado en la solicitud
                 numeros,
                 rifaId
             })

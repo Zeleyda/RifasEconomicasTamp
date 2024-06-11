@@ -40,7 +40,7 @@ if (!isset($maxNumbers) || $numero > $maxNumbers) {
 
 // Verificar si el número ya está en una orden pendiente de pago o reciente
 $query = "
-    SELECT orders.OrderDate, orders.Status, orders.PersonName
+    SELECT orders.OrderDate, orders.Status, orders.PersonName, orders.Estado
     FROM numbers
     JOIN orders ON numbers.OrderId = orders.OrderId
     WHERE numbers.Number = ? AND orders.RifaId = ?

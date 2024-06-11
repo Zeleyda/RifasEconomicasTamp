@@ -179,16 +179,17 @@ footer {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
+    margin: 5% auto;
+    padding: 30px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 400px;
+    max-width: 600px;
     border-radius: 10px;
     text-align: center;
 }
 
-.modal-content input {
+.modal-content input,
+.modal-content select {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px 0;
@@ -197,8 +198,8 @@ footer {
 }
 
 .modal-content button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 15px 30px;
+    font-size: 18px;
     color: white;
     background-color: green;
     border: none;
@@ -217,13 +218,13 @@ footer {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .modal .close:hover,
 .modal .close:focus {
     color: black;
     text-decoration: none;
-    cursor: pointer;
 }
 
 @media (max-width: 480px) {

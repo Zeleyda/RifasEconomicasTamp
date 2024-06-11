@@ -86,11 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mostrar información de la orden en un modal
     function showOrderInfo(order) {
-        const { OrderDate, Status, PersonName } = order;
+        const { OrderDate, Status, PersonName, Estado } = order;
         const orderInfo = `
             <p><strong>Fecha de Orden:</strong> ${OrderDate}</p>
             <p><strong>Estado:</strong> ${Status}</p>
             <p><strong>Nombre:</strong> ${PersonName}</p>
+            <p><strong>Estado:</strong> ${Estado}</p>
         `;
         orderInfoDiv.innerHTML = orderInfo;
         orderInfoModal.style.display = 'block';
