@@ -11,9 +11,7 @@
 <body>
 <?php include 'navbar.html'; ?>
 <h3></h3>
-<h3></h3>
-<h3></h3>
-<h3></h3>
+
     <div class="main-content">
         <div class="container">
             <h1>Buscador de Boletos</h1>
