@@ -22,16 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const apartButton = document.createElement('button');
-    apartButton.id = 'apart-button';
-    apartButton.textContent = 'Apartar boletos';
-    apartButton.addEventListener('click', () => {
-        alert('Boletos apartados!');
-    });
-
     selectedNumbersBottomsheet.insertBefore(closeBtn, selectedNumbersBottomsheet.firstChild);
     selectedNumbersBottomsheet.insertBefore(toggleSizeBtn, selectedNumbersBottomsheet.firstChild);
-    selectedNumbersBottomsheet.appendChild(apartButton);
 
     for (let i = 1; i <= 5000; i++) {
         const button = document.createElement('button');
@@ -59,4 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
             selectedNumbersBottomsheet.classList.remove('show');
         }
     }
+
+    // Lógica para el formulario
+    const apartButton = document.getElementById('apart-button');
+    const formularioBottomsheet = document.getElementById('formulario-bottomsheet');
+    const formCloseBtn = formularioBottomsheet.querySelector('.close-btn');
+
+    apartButton.addEventListener('click', () => {
+        formularioBottomsheet.classList.add('show');
+    });
+
+    formCloseBtn.addEventListener('click', () => {
+        formularioBottomsheet.classList.remove('show');
+    });
 });
