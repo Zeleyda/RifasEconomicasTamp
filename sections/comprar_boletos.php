@@ -28,6 +28,7 @@
     <div id="selected-numbers-bottomsheet">
         <h2>Boletos Seleccionados</h2>
         <div id="selected-numbers"></div>
+       
     </div>
     
 <?php include 'footer.html'; ?>

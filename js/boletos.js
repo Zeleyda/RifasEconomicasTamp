@@ -15,15 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleSizeBtn.addEventListener('click', () => {
         if (selectedNumbersBottomsheet.style.maxHeight === '50vh') {
             selectedNumbersBottomsheet.style.maxHeight = '90vh';
-            selectedNumbersDiv.style.maxHeight = 'calc(90vh - 60px)';
+            selectedNumbersDiv.style.maxHeight = 'calc(90vh - 140px)';
         } else {
             selectedNumbersBottomsheet.style.maxHeight = '50vh';
-            selectedNumbersDiv.style.maxHeight = 'calc(50vh - 60px)';
+            selectedNumbersDiv.style.maxHeight = 'calc(50vh - 140px)';
         }
+    });
+
+    const apartButton = document.createElement('button');
+    apartButton.id = 'apart-button';
+    apartButton.textContent = 'Apartar boletos';
+    apartButton.addEventListener('click', () => {
+        alert('Boletos apartados!');
     });
 
     selectedNumbersBottomsheet.insertBefore(closeBtn, selectedNumbersBottomsheet.firstChild);
     selectedNumbersBottomsheet.insertBefore(toggleSizeBtn, selectedNumbersBottomsheet.firstChild);
+    selectedNumbersBottomsheet.appendChild(apartButton);
 
     for (let i = 1; i <= 5000; i++) {
         const button = document.createElement('button');
