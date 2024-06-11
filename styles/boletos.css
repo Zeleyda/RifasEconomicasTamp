@@ -1,131 +1,100 @@
-/* Estilos generales para el body y html */
-html, body {
-    height: 100%;
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evita scroll horizontal */
 }
 
-/* Flex container */
-.flex-container {
+.main-content {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-top: 60px; /* Ajusta según la altura del navbar */
-    padding-bottom: 60px; /* Ajusta según la altura del footer */
-}
-
-/* Contenedor principal */
-.container {
-    background-color: #474343;
+    align-items: flex-start;
     padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 600px; /* Ancho fijo */
-    max-width: 90%; /* Ajustar para pantallas más pequeñas */
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    overflow: auto; /* Agregar scroll si el contenido excede el tamaño del contenedor */
-    display: flex; /* Flexbox para centrar verticalmente */
-    flex-direction: column; /* Apilar los hijos verticalmente */
-    align-items: center; /* Centrar horizontalmente */
+    width: 100%;
+    margin-top: 120px; /* Asegura que el contenido no sea tapado por el navbar */
 }
 
-/* Estilo para el título principal */
-.main-title {
+.container {
+    width: 100%;
+    max-width: 1200px; /* Más ancho */
+    margin: 20px auto; /* Centrado */
+    border: 1px solid #ccc;
+    border-top: 15px solid green;
+    border-radius: 15px;
+    padding: 20px;
     text-align: center;
-    margin-bottom: 20px;
-    color: white;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-/* Estilo para el título de boletos */
-.title-boletos {
+.container h1 {
+    color: green;
+    font-size: 24px;
+    margin-bottom: 10px;
     text-align: center;
-    margin-bottom: 20px;
-    color: black;
 }
 
-/* Estilos para el contenedor de búsqueda */
-#search-container {
+.search-bar {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-bottom: 20px;
-    gap: 10px;
 }
 
-#search-input {
+.search-bar input[type="text"] {
+    width: 70%;
     padding: 10px;
-    border-radius: 5px;
-    border: 2px solid #4caf50;
-    width: 300px;
-    transition: all 0.3s ease;
-}
-
-#search-input:focus {
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
     outline: none;
-    border-color: #2e7d32;
-    box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
 }
 
-#reserve-button {
+.search-bar button {
     padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    background-color: #4caf50;
+    font-size: 16px;
     color: white;
+    background-color: green;
+    border: none;
+    border-radius: 0 4px 4px 0;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-#reserve-button:hover {
-    background-color: #2e7d32;
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
 }
 
-/* Estilos generales para los botones */
-#buttons-container {
-    display: flex; /* Cambiar a diseño flex */
-    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en la siguiente línea */
-    justify-content: center; /* Centrar los botones horizontalmente */
-    gap: 10px; /* Espacio entre los botones */
+.button-container button {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.button {
-    padding: 10px; /* Relleno para el botón */
-    text-align: center; /* Centrar texto */
-    background-color: green; /* Color predeterminado para botones disponibles */
-    color: white; /* Color del texto */
-    border: 2px solid #4caf50; /* Color del borde */
-    border-radius: 15px; /* Esquinas redondeadas */
-    cursor: pointer; /* Cursor de puntero al pasar el ratón */
-    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+.button-container .available {
+    background-color: green;
+    color: white;
 }
 
-.button.occupied {
-    background-color: #ccc; /* Color gris para botones ocupados */
-    cursor: not-allowed; /* Cursor no permitido para botones ocupados */
-}
-
-.button.selected {
-    background-color: #4caf50; /* Tono diferente para botones seleccionados */
-}
-
-/* Ajustes para pantallas más pequeñas */
-@media (max-width: 768px) {
-    .container {
-        width: 90%; /* Ajustar el ancho para pantallas pequeñas */
-    }
-    #buttons-container {
-        justify-content: center; 
-        width: 20%;/* Asegurar que los botones estén centrados en pantallas más pequeñas */
-    }
+.button-container .unavailable {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
 }
 
 /* Estilos para el bottom sheet */
-#selected-numbers-footer {
+#selected-numbers-bottomsheet {
     position: fixed;
     bottom: -100%; /* Oculto inicialmente */
     left: 0;
@@ -138,7 +107,7 @@ html, body {
     z-index: 1000; /* Asegurar que el bottom sheet esté por encima de otros elementos */
 }
 
-#selected-numbers-footer.show {
+#selected-numbers-bottomsheet.show {
     bottom: 0; /* Mostrar el bottom sheet */
 }
 
@@ -146,5 +115,33 @@ html, body {
 .ticket-container {
     background-color: green;
     color: white;
- 
 }
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;
+        border-top: 15px solid green;
+        border-radius: 20px;
+    }
+
+    .search-bar input[type="text"] {
+        width: 80%;
+        padding: 10px;
+    }
+
+    .search-bar button {
+        padding: 10px;
+    }
+}
+
