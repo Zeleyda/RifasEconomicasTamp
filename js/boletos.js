@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleSizeBtn.addEventListener('click', () => {
         if (selectedNumbersBottomsheet.style.maxHeight === '50vh') {
             selectedNumbersBottomsheet.style.maxHeight = '90vh';
+            selectedNumbersDiv.style.maxHeight = 'calc(90vh - 60px)';
         } else {
             selectedNumbersBottomsheet.style.maxHeight = '50vh';
+            selectedNumbersDiv.style.maxHeight = 'calc(50vh - 60px)';
         }
     });
 
