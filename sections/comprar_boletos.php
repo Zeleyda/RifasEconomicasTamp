@@ -32,7 +32,7 @@
             <button id="apartar-button">Apartar boletos</button>
         </div>    
         <div id="selected-numbers"></div>
-        <button id="apart-button">Apartar boletos</button>
+        <!--<button id="apart-button">Apartar boletos</button>!-->
     </div>
 
     <div id="formulario-bottomsheet">
