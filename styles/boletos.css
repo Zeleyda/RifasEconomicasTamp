@@ -98,17 +98,49 @@ body {
     position: fixed;
     bottom: -100%; /* Oculto inicialmente */
     left: 0;
-    width: 100%;
+    width: 100vw;
     background-color: #f0f0f0;
     border-top: 1px solid #ccc;
-    padding: 10px 20px;
+    padding: 10px;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     transition: bottom 0.3s ease; /* Transición suave para mostrar/ocultar */
     z-index: 1000; /* Asegurar que el bottom sheet esté por encima de otros elementos */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centramos el contenido horizontalmente */
 }
 
 #selected-numbers-bottomsheet.show {
     bottom: 0; /* Mostrar el bottom sheet */
+}
+
+#selected-numbers-bottomsheet .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+}
+
+#selected-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center; /* Centramos los botones seleccionados */
+    margin-top: 20px;
+}
+
+#selected-numbers .available {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: default;
+    padding: 10px;
+    font-size: 14px;
 }
 
 /* Estilos adicionales */
@@ -136,7 +168,7 @@ footer {
         max-width: 100%; /* Ajusta el ancho máximo para dispositivos móviles */
         padding: 20px;
         margin: 20px auto;
-        border-top: 10px solid green;
+        border-top: 15px solid green;
         border-radius: 20px;
     }
 
