@@ -99,11 +99,13 @@ body {
     bottom: -100%; /* Oculto inicialmente */
     left: 0;
     width: 100vw;
+    max-height: 50vh; /* Limitar la altura máxima del bottom sheet */
+    overflow-y: auto; /* Habilitar scroll vertical si excede la altura máxima */
     background-color: #f0f0f0;
     border-top: 1px solid #ccc;
-    padding: 10px;
+    padding: 20px 10px 10px 10px; /* Ajustamos el padding para dejar espacio al botón */
     box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    transition: bottom 0.3s ease; /* Transición suave para mostrar/ocultar */
+    transition: bottom 0.3s ease, max-height 0.3s ease; /* Transición suave para mostrar/ocultar */
     z-index: 1000; /* Asegurar que el bottom sheet esté por encima de otros elementos */
     display: flex;
     flex-direction: column;
@@ -117,17 +119,41 @@ body {
 #selected-numbers-bottomsheet .close-btn {
     position: absolute;
     top: 10px;
+    right: 50px; /* Ajuste a la izquierda */
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+    z-index: 1001; /* Asegurar que esté encima del bottom sheet */
+}
+
+#selected-numbers-bottomsheet .toggle-size-btn {
+    position: absolute;
+    top: 10px;
     right: 10px;
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
     color: #333;
+    z-index: 1001; /* Asegurar que esté encima del bottom sheet */
+}
+
+#selected-numbers-bottomsheet h2 {
+    margin-top: 40px; /* Espacio para el botón de cerrar */
+    position: sticky;
+    top: 0;
+    background: #f0f0f0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 1000;
 }
 
 #selected-numbers {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr); /* 13 columnas en escritorio */
     gap: 5px;
     justify-content: center; /* Centramos los botones seleccionados */
     margin-top: 20px;
@@ -141,21 +167,6 @@ body {
     cursor: default;
     padding: 10px;
     font-size: 14px;
-}
-
-/* Estilos adicionales */
-.ticket-container {
-    background-color: green;
-    color: white;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
-    width: 100%;
-    position: relative;
 }
 
 @media (max-width: 480px) {
@@ -189,5 +200,9 @@ footer {
     .button-container button {
         padding: 8px; /* Reduce el padding de los botones */
         font-size: 12px; /* Reduce el tamaño de la fuente de los botones */
+    }
+
+    #selected-numbers {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas en vista móvil */
     }
 }
