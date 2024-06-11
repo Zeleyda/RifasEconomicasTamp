@@ -119,7 +119,7 @@ body {
         width: 90%; /* Establece el ancho del contenedor al 90% del contenedor padre en pantallas pequeñas */
         padding: 20px; /* Añade un relleno de 20 píxeles dentro del contenedor en pantallas pequeñas */
         margin: 150px auto 20px; /* Añade margen superior de 150px en pantallas pequeñas para bajarlo */
-        border-top: 15px solid green; /* Ajusta el borde superior a 15 píxeles de color verde en pantallas pequeñas */
+        border-top: 10px solid green; /* Ajusta el borde superior a 15 píxeles de color verde en pantallas pequeñas */
         border-radius: 20px; /* Redondea todas las esquinas en pantallas pequeñas */
     }
 

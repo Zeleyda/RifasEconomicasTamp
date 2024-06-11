@@ -1,0 +1,111 @@
+/* Fondo oscuro */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999; /* Debajo del formulario */
+    display: none;
+}
+
+#formulario-bottomsheet {
+    position: fixed;
+    top: -100%; /* Oculto inicialmente */
+    left: 0;
+    width: 100vw;
+    max-height: 90vh; /* Limitar la altura máxima del bottom sheet */
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    transition: top 0.3s ease; /* Transición suave para mostrar/ocultar */
+    z-index: 1000; /* Asegurar que el bottom sheet esté por encima de otros elementos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#formulario-bottomsheet.show {
+    top: 15%; /* Mostrar el bottom sheet */
+}
+
+#formulario-bottomsheet .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Ajuste a la izquierda */
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+}
+
+#formulario-bottomsheet h2 {
+    margin-top: 40px; /* Espacio para el botón de cerrar */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 24px;
+    color: black;
+}
+
+#formulario-bottomsheet form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+#formulario-bottomsheet label {
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: black;
+}
+
+#formulario-bottomsheet input[type="text"], 
+#formulario-bottomsheet select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#formulario-bottomsheet input[type="text"] {
+    margin-bottom: 20px;
+}
+
+#formulario-bottomsheet input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#formulario-bottomsheet button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    #formulario-bottomsheet {
+        top: -100%; /* Oculto inicialmente */
+        left: 0;
+        width: 100vw;
+        max-height: 100vh; /* Limitar la altura máxima del bottom sheet */
+        padding: 10px;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        transition: top 0.3s ease; /* Transición suave para mostrar/ocultar */
+        z-index: 1000; /* Asegurar que el bottom sheet esté por encima de otros elementos */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #formulario-bottomsheet .close-btn {
+        right: 10px; /* Más a la izquierda */
+    }
+}
