@@ -26,8 +26,26 @@
     </div>
 
     <div id="selected-numbers-bottomsheet">
-        <h2>Boletos Seleccionados</h2>
+        <div class="bottomsheet-header">
+            <h2>Boletos Seleccionados</h2>
+            <button id="apartar-button">Apartar boletos</button>
+        </div>    
         <div id="selected-numbers"></div>
+    </div>
+
+    <!-- Modal para pedir datos -->
+    <div id="apartar-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Apartar Boletos</h2>
+            <form id="apartar-form">
+                <label for="personName">Nombre:</label>
+                <input type="text" id="personName" name="personName" required>
+                <label for="personPhone">Teléfono:</label>
+                <input type="text" id="personPhone" name="personPhone" required>
+                <button type="submit">Confirmar</button>
+            </form>
+        </div>
     </div>
     
 <?php include 'footer.html'; ?>

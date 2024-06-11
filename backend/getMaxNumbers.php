@@ -14,9 +14,8 @@ if ($conn->connect_error) {
     die(json_encode(['success' => false, 'message' => 'Conexión fallida: ' . $conn->connect_error]));
 }
 
-// Obtener datos de la solicitud POST
-$data = json_decode(file_get_contents('php://input'), true);
-$rifaId = isset($data['rifaId']) ? (int)$data['rifaId'] : 0;
+// Obtener datos de la solicitud GET
+$rifaId = isset($_GET['rifaId']) ? (int)$_GET['rifaId'] : 0;
 
 if ($rifaId <= 0) {
     echo json_encode(['success' => false, 'message' => 'ID de rifa inválido.']);

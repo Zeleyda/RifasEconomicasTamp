@@ -50,6 +50,7 @@ try {
             throw new Exception('Número fuera de rango.');
         }
 
+        // Verificación final de que el número no está ocupado
         $query = "
             SELECT orders.OrderId
             FROM numbers
@@ -65,7 +66,7 @@ try {
 
         if ($stmt->num_rows > 0) {
             $stmt->close();
-            throw new Exception('El número ya está reservado en una orden pendiente de pago o es reciente.');
+            throw new Exception("El número $numero ya está reservado en una orden pendiente de pago o es reciente.");
         }
         $stmt->close();
     }

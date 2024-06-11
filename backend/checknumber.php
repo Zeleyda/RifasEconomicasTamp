@@ -40,7 +40,7 @@ if (!isset($maxNumbers) || $numero > $maxNumbers) {
 
 // Verificar si el número ya está en una orden pendiente de pago o reciente
 $query = "
-    SELECT orders.OrderId
+    SELECT orders.OrderDate, orders.Status, orders.PersonName
     FROM numbers
     JOIN orders ON numbers.OrderId = orders.OrderId
     WHERE numbers.Number = ? AND orders.RifaId = ?
@@ -50,10 +50,12 @@ $query = "
 $stmt = $conn->prepare($query);
 $stmt->bind_param("ii", $numero, $rifaId);
 $stmt->execute();
-$stmt->store_result();
+$result = $stmt->get_result();
 
-if ($stmt->num_rows > 0) {
-    echo json_encode(['available' => false]);
+if ($result->num_rows > 0) {
+    $order = $result->fetch_assoc();
+    $order['Status'] = $order['Status'] == 1 ? 'Pendiente de Pago' : 'Pagado';
+    echo json_encode(['available' => false, 'order' => $order]);
 } else {
     echo json_encode(['available' => true]);
 }
