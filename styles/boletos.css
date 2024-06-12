@@ -141,6 +141,9 @@ body {
 
 #selected-numbers {
     text-align: center;
+    overflow-y: auto; /* Habilitar scroll vertical */
+    max-height: 200px; /* Limitar la altura máxima del contenedor */
+    width: 100%; /* Asegurar que el contenedor ocupe todo el ancho disponible */
 }
 
 footer {
@@ -154,6 +157,7 @@ footer {
 
 #apartar-button {
     padding: 10px 20px;
+    margin-right: 25px;
     font-size: 16px;
     color: white;
     background-color: green;
