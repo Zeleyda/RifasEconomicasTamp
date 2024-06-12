@@ -35,6 +35,7 @@
         <!--<button id="apart-button">Apartar boletos</button>!-->
     </div>
 
+    <!--
     <div id="formulario-bottomsheet">
         <button class="close-btn">&times;</button>
         <h2>LLENA TUS DATOS Y DA CLICK EN APARTAR</h2>
@@ -45,7 +46,6 @@
             <label for="estado">Estado</label>
             <select id="estado" name="estado" required>
                 <option value="">Seleccionar...</option>
-                <!-- Añade las opciones aquí -->
             </select>
 
             <label for="celular">Número de Celular (WhatsApp)</label>
@@ -57,6 +57,7 @@
             <button type="submit">Apartar Boleto</button>
         </form>
     </div>
+    !-->
 
     <!-- Modal para pedir datos -->
     <div id="apartar-modal" class="modal">

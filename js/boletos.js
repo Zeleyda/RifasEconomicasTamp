@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedButtons = Array.from(document.querySelectorAll('.ticket-container'));
         const numeros = selectedButtons.map(button => parseInt(button.textContent, 10));
 
+        
         fetch('../backend/saveOrder.php', {
             method: 'POST',
             headers: {
@@ -144,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             body: JSON.stringify({
                 personName,
                 personPhone,
-                estado, // Incluir el estado en la solicitud
+                estado,
                 numeros,
                 rifaId
             })
