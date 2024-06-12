@@ -1,4 +1,5 @@
 .info-container {
+    font-family: '/RifasEconomicasTamp/fonts/fonts/Roboto-Bold.ttf', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,11 +12,11 @@
 }
 
 .roboto-regular {
-    font-family: "Roboto", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400; /* El peso de la fuente */
+    font-style: normal; /* El estilo de la fuente (normal, italic, etc.) */
+}
+
 
 .info-box {
     background-color: white;
