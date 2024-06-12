@@ -18,7 +18,7 @@ try {
     // Obtener datos de la solicitud POST
     $data = json_decode(file_get_contents('php://input'), true);
     if (!$data) {
-        throw new Exception('Datos inválidos.');
+        throw new Exception('Datos inválidos...');
     }
 
     $personName = isset($data['personName']) ? $conn->real_escape_string($data['personName']) : '';
@@ -28,7 +28,7 @@ try {
     $rifaId = isset($data['rifaId']) ? (int)$data['rifaId'] : 0;
 
     if (!is_array($numeros) || empty($personName) || empty($personPhone) || empty($estado) || $rifaId <= 0) {
-        throw new Exception('Datos inválidos.');
+        throw new Exception("Datos invalidos.");
     }
 
     // Obtener el máximo de números permitidos para la rifa actual
