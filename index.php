@@ -12,34 +12,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <div class="background-image"></div>
     <div class="overlay"></div>
     <div class="content">
-    <?php include 'sections/navbar.html'; ?>
+        <?php include 'sections/navbar.html'; ?>
 
         <div class="main-container" id="mainContainer">
             <div class="carousel-container" id="carouselContainer">
                 <div class="carousel">
-
                     <div class="slide">
                        <img src="images/camioneta1.jpg" alt="Slide 1">
-                    <button class="buy-button">COMPRAR BOLETO</button>
+                       <button class="buy-button">COMPRAR BOLETO</button>
                     </div>
-
                     <div class="slide">
                         <img src="images/camioneta2.jpg" alt="Slide 2">
                         <button class="buy-button">COMPRAR BOLETO</button>
                     </div>
-
                     <div class="slide">
-                        <img src="images/camioneta3.jpg" alt="Slide 3" >
+                        <img src="images/camioneta3.jpg" alt="Slide 3">
                         <button class="buy-button" href="/RifasEconomicasTamp/sections/comprar_boletos.php">COMPRAR BOLETO</button>
-
-                        
                     </div>
-                    
                 </div>
                 <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
                 <button class="next" onclick="moveSlide(1)">&#10095;</button>
@@ -49,7 +45,7 @@
             <div class="info-container" id="info5-container">
                 <div class="info-box" id="info00">
                     <h3>RIFAS ECONOMICAS TAMPICO</h3>
-                    <p>¡Bienvenidos! a <em>Rifas ECONOMICAS TAMPICO</em>, realizamos sorteos en base a la Lotería Nacional, en nuestros sorteos participan amigos de todo México, estamos ubicados en Tampico Tamaulipas.</p>
+                    <p>¡Bienvenidos! a <em>RIFAS ECONOMICAS TAMPICO</em>, realizamos sorteos en base a la Lotería Nacional, en nuestros sorteos participan amigos de todo México, estamos ubicados en Tampico Tamaulipas.</p>
                     <img src="images/logotipoempresa.png" alt="Logo Rifa entre amigos" class="info-image">
                 </div>
             </div>
@@ -58,23 +54,41 @@
             <div class="info-container" id="info2-container">
                 <div class="info-box" id="info2">
                     <!-- Acordeón de preguntas frecuentes -->
-                    <div class="accordion">
+                    <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
-                            <button class="accordion-button">¿CÓMO SE ELIGEN A LOS GANADORES?</button>
-                            <div class="accordion-content">
-                                <p>Los ganadores se eligen a través de un sorteo basado en los números de la Lotería Nacional.</p>
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    ¿CÓMO SE ELIGEN A LOS GANADORES?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Los ganadores se eligen a través de un sorteo basado en los números de la Lotería Nacional.
+                                </div>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-button">¿QUÉ SUCEDE CUANDO EL NÚMERO GANADOR ES UN BOLETO NO VENDIDO?</button>
-                            <div class="accordion-content">
-                                <p>Si el número ganador corresponde a un boleto no vendido, se vuelve a realizar el sorteo hasta que haya un ganador válido.</p>
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    ¿QUÉ SUCEDE CUANDO EL NÚMERO GANADOR ES UN BOLETO NO VENDIDO?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Si el número ganador corresponde a un boleto no vendido, se vuelve a realizar el sorteo hasta que haya un ganador válido.
+                                </div>
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-button">¿DÓNDE SE PUBLICA A LOS GANADORES?</button>
-                            <div class="accordion-content">
-                                <p>Los ganadores se publican en nuestro sitio web y en nuestras redes sociales oficiales.</p>
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    ¿DÓNDE SE PUBLICA A LOS GANADORES?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Los ganadores se publican en nuestro sitio web y en nuestras redes sociales oficiales.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -89,7 +103,7 @@
                     <h3>Primer Lugar</h3>
                     <h2>NISSAN PATFINDER PREMIER 2015</h2>
                     <h3>Segundo Lugar</h3>
-                    <h2>CADILLAC SRX 2</h2>
+                    <h2>CADILLAC SRX 2</h3>
                     <h3>Tercer Lugar</h3>
                     <h2>PREMIO SORPRESA</h2>
                     <div class="pricing-info">

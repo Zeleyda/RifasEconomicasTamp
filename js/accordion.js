@@ -1,15 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Añadir funcionalidad del acordeón
-    const accordionButtons = document.querySelectorAll('.accordion-button');
-    accordionButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const content = this.nextElementSibling;
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-            } else {
-                content.style.display = 'block';
+    var accordionItems = document.querySelectorAll('.accordion-button');
+    
+    accordionItems.forEach(function(item) {
+      item.addEventListener('click', function() {
+        // Remueve la clase 'collapsed' de todos los botones
+        accordionItems.forEach(function(btn) {
+          if (btn !== item) {
+            btn.classList.add('collapsed');
+            btn.setAttribute('aria-expanded', 'false');
+            var contentId = btn.getAttribute('data-bs-target');
+            var content = document.querySelector(contentId);
+            if (content) {
+              content.classList.remove('show');
             }
+          }
         });
+      });
     });
-});
+  });
