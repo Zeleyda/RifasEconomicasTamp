@@ -57,11 +57,11 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" onclick="toggleAccordion(0)">
                                     ¿CÓMO SE ELIGEN A LOS GANADORES?
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-content" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     Los ganadores se eligen a través de un sorteo basado en los números de la Lotería Nacional.
                                 </div>
@@ -69,11 +69,11 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button collapsed" type="button" onclick="toggleAccordion(1)">
                                     ¿QUÉ SUCEDE CUANDO EL NÚMERO GANADOR ES UN BOLETO NO VENDIDO?
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-content" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     Si el número ganador corresponde a un boleto no vendido, se vuelve a realizar el sorteo hasta que haya un ganador válido.
                                 </div>
@@ -81,11 +81,11 @@
                         </div>
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="accordion-button collapsed" type="button" onclick="toggleAccordion(2)">
                                     ¿DÓNDE SE PUBLICA A LOS GANADORES?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-content" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     Los ganadores se publican en nuestro sitio web y en nuestras redes sociales oficiales.
                                 </div>
@@ -98,13 +98,12 @@
             <h2 class="info-title" id="info3-title">SE VA 1 VEHÍCULO 1 GANADOR</h2>
             <div class="info-container" id="info2-container">
                 <div class="info-box" id="info2">
-                    <!-- Contenido nuevo según la imagen proporcionada -->
-                    <img src="images/camioneta1.jpg" alt="Vehicle Image" class="vehicle-image"> <!-- Imagen del vehículo -->
+                    <img src="images/camioneta1.jpg" alt="Vehicle Image" class="vehicle-image">
                     <h3>Primer Lugar</h3>
                     <h2>NISSAN PATFINDER PREMIER 2015</h2>
-                    <h3>Segundo Lugar</h3>
-                    <h2>CADILLAC SRX 2</h3>
-                    <h3>Tercer Lugar</h3>
+                    <h3>Segundo Lugar</h2>
+                    <h2>CADILLAC SRX 2</h2>
+                    <h3>Tercer Lugar</h2>
                     <h2>PREMIO SORPRESA</h2>
                     <div class="pricing-info">
                         <p>1 boleto por $30 (5 Oportunidades)</p>
@@ -133,7 +132,7 @@
         <?php include 'sections/footer.html'; ?>
     </div>
 
-    <script src="js/navbar.js"></script>
+    <script src="/RifasEconomicasTamp/js/navbar.js"></script>
     <script src="js/carousel.js"></script>
     <script src="js/info.js"></script>
     <script src="js/accordion.js"></script>
