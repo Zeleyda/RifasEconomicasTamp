@@ -1,0 +1,22 @@
+.accordion-content {
+    display: none;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.accordion-content.show {
+    display: block;
+}
+
+.accordion-button.collapsed::after {
+    content: '\25bc'; /* Down arrow */
+}
+
+.accordion-button:not(.collapsed)::after {
+    content: '\25b2'; /* Up arrow */
+}
+
+/* Aumentar el tamaño de la fuente de las respuestas */
+.accordion-body {
+    font-size: 1.2em; /* Puedes ajustar este valor según sea necesario */
+}
