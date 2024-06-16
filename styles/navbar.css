@@ -20,12 +20,13 @@ body {
     padding: 20px 30px;
     height: 160px;
     top: 0;
-    width: 100%;
+    left: 0; /* Asegura que el navbar comienza desde el borde izquierdo */
+    right: 0; /* Asegura que el navbar se extiende hasta el borde derecho */
+    width: 100%; /* Ocupar todo el ancho de la página */
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #000000; /* Fixed color */
-    padding: 15px 20px; /* More padding for a wider appearance */
     z-index: 1000; /* Ensure the navbar stays on top of other content */
     box-sizing: border-box; /* Include padding in width */
     border-top: 25px solid green; /* Top border color */
@@ -58,6 +59,15 @@ body {
     background-color: #000000; /* Same color as navbar */
     z-index: 999; /* Slightly below navbar */
     box-sizing: border-box; /* Include padding in width */
+    opacity: 0; /* Para la animación de desvanecimiento */
+    transform: translateY(-20px); /* Para la animación de desplazamiento */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Añade transición para la animación */
+}
+
+.navbar-links.show {
+    display: block;
+    opacity: 1; /* Mostrar con opacidad */
+    transform: translateY(0); /* Restablecer desplazamiento */
 }
 
 .navbar-links ul {
@@ -83,11 +93,15 @@ body {
 
 .toggle-button {
     display: block; /* Display the toggle button */
-    font-size: 2.8em;
-    color: white;
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0;
+}
+
+.menu-icon {
+    width: 30px; /* Ajusta el tamaño del ícono según tus necesidades */
+    height: 30px;
 }
 
 @media (min-width: 768px) {
@@ -98,6 +112,9 @@ body {
         justify-content: flex-end;
         width: auto;
         background-color: transparent; /* Remove background color */
+        opacity: 1; /* Asegurar que sea visible en pantallas grandes */
+        transform: none; /* Sin transformación en pantallas grandes */
+        transition: none; /* Remove transition */
     }
     .navbar-links ul {
         flex-direction: row; /* Row direction for larger screens */
@@ -115,7 +132,7 @@ body {
 
 .main-container {
     flex: 1;
-    margin-top: 80px; /* Adjust based on navbar height to prevent content overlap */
+    margin-top: 160px; /* Adjust based on navbar height to prevent content overlap */
     width: 100%;
     box-sizing: border-box; /* Include padding in width */
     display: flex;

@@ -1,9 +1,15 @@
 function toggleMenu() {
     var navbarLinks = document.getElementById('navbarLinks');
-    if (navbarLinks.style.display === 'block') {
-        navbarLinks.style.display = 'none';
+    if (navbarLinks.classList.contains('show')) {
+        navbarLinks.classList.remove('show');
+        setTimeout(function () {
+            navbarLinks.style.display = 'none';
+        }, 300); // Esperar a que termine la animación antes de ocultar
     } else {
         navbarLinks.style.display = 'block';
+        setTimeout(function () {
+            navbarLinks.classList.add('show');
+        }, 10); // Asegurar que se agrega la clase después de que el bloque sea visible
     }
 }
 
