@@ -1,3 +1,11 @@
+img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 @font-face {
     font-family: 'Poppins-SemiBold';
     src: url('/RifasEconomicasTamp/fonts/Poppins-SemiBold.ttf') format('truetype');

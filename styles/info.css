@@ -1,3 +1,10 @@
+img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 @font-face {
     font-family: 'Poppins-SemiBold';
     src: url('/RifasEconomicasTamp/fonts/Poppins-SemiBold.ttf') format('truetype');
@@ -293,4 +300,8 @@
         margin-top: 100px;
         /* Añade un margen superior al botón para separarlo del pricing info */
     }
+
+
+  
+    
 }

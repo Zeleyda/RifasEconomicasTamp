@@ -137,5 +137,6 @@
     <script src="js/carousel.js"></script>
     <script src="js/info.js"></script>
     <script src="js/accordion.js"></script>
+    <script src="js/protect-images.js"></script>
 </body>
 </html>
