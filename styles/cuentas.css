@@ -1,32 +1,23 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+
+.container {
+    width: 90%; /* Establece el ancho del contenedor al 90% del contenedor padre */
+    max-width: 800px; /* Establece un ancho máximo de 800 píxeles */
+    margin: 120px auto 20px; /* Centra el contenedor horizontalmente y añade un margen superior de 120px para bajarlo */
+    border: 1px solid #ccc; /* Añade un borde de 1 píxel de color gris claro */
+    border-top: 15px solid green; /* Añade un borde superior de 30 píxeles de color verde */
+    border-radius: 15px; /* Redondea todas las esquinas */
+    padding: 20px; /* Añade relleno dentro del contenedor */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    background-color: white; /* Establece el color de fondo del contenedor a blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra alrededor del contenedor */
+    flex: 1; /* Permite que el contenedor crezca para llenar el espacio disponible */
+    display: flex; /* Utiliza el modelo de caja flexible para el diseño del contenedor */
+    flex-direction: column; /* Alinea los elementos hijos en una columna */
+    justify-content: flex-start; /* Alinea los elementos hijos al inicio del contenedor */
 }
 
-.background-image {
-    background: url('../images/background1.jpg') no-repeat center center fixed; /* Replace with your image URL */
-    background-size: cover;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: -2; /* Ensure the background is behind the overlay */
-}
-
-.overlay {
-    background-color: rgba(58, 56, 56, 0.927); /* Light grey with 50% opacity */
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: -1; /* Ensure the overlay is above the background image but below the content */
-}
-
-.content {
-    position: relative;
-    z-index: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.container h1 {
+    color: green; /* Establece el color del texto a verde */
+    font-size: 24px; /* Establece el tamaño de la fuente a 24 píxeles */
+    margin-bottom: 10px; /* Reduce el margen inferior */
 }
