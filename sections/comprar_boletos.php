@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/boletos.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/formulario.css"> <!-- Nueva hoja de estilos -->
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/formulario.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
     <title>RIFAS ECONOMICAS TAMPICO</title>
 </head>
 <body>
+<div class="background-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
 <?php include 'navbar.html'; ?>
 <h3></h3>
 

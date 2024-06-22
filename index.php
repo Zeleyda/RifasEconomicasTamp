@@ -92,6 +92,22 @@
                                 </div>
                             </div>
                         </div>
+
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" onclick="toggleAccordion(2)">
+                                    ¿CUANTO TIEMPO TENGO PARA PAGAR BOLETOS APARTADOS?
+                                </button>
+                            </h2>
+                            <div class="accordion-content" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Se cuenta un lapso de 24 horas para el pago de los boletos, si no se pagan dentro del lapso, los boletos son cancelados.
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -100,22 +116,18 @@
             <div class="info-container" id="info2-container">
                 <div class="info-box" id="info2">
                     <img src="images/camioneta1.jpg" alt="Vehicle Image" class="vehicle-image">
-                    <h3>Primer Lugar</h3>
-                    <h2>NISSAN PATFINDER PREMIER 2015</h2>
-                    <h3>Segundo Lugar</h2>
-                    <h2>CADILLAC SRX 2</h2>
-                    <h3>Tercer Lugar</h2>
-                    <h2>PREMIO SORPRESA</h2>
+                    <h1>BOLETO GANADOR</h3>
+                    <h2>MODELO DEL CARRO</h2>
+               
                     <div class="pricing-info">
-                        <p>1 boleto por $30 (5 Oportunidades)</p>
-                        <p>2 boletos por $60 (10 Oportunidades)</p>
-                        <p>3 boletos por $90 (15 Oportunidades)</p>
-                        <p>5 boletos por $150 (25 Oportunidades)</p>
-                        <p>10 boletos por $300 (50 Oportunidades)</p>
+                        <h2>1 BOLETO POR $7</h2>
+                        <h2>2 BOLETOS POR $14</h2>
+                        <h2>10 BOLETOS POR $70</h2>
+                        <h2>20 BOLETOS POR $140</h2>
+                        <h2>40 BOLETOS POR $280</h2>
                     </div>
                     <button class="buy-button" href="/RifasEconomicasTamp/sections/comprar_boletos.php">COMPRAR BOLETO</button>
                 </div>
-            </div>
 
             <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
             <div class="info-container" id="info1-container">
@@ -137,6 +149,5 @@
     <script src="js/carousel.js"></script>
     <script src="js/info.js"></script>
     <script src="js/accordion.js"></script>
-    <script src="js/protect-images.js"></script>
 </body>
 </html>

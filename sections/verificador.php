@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/verificador.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
+    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
 </head>
 <body>
+<div class="background-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
     <?php include 'navbar.html'; ?>
     <h3>Verificar Boleto</h3>
 

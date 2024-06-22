@@ -1,11 +1,3 @@
-img {
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
 @font-face {
     font-family: 'Poppins-SemiBold';
     src: url('/RifasEconomicasTamp/fonts/Poppins-SemiBold.ttf') format('truetype');
@@ -15,7 +7,7 @@ img {
 
 body {
     margin: 0;
-    padding: 0;
+    padding-right: 40;
     font-family: "Poppins-SemiBold", sans-serif;
     display: flex;
     flex-direction: column;
@@ -25,7 +17,7 @@ body {
 
 .navbar {
     position: fixed;
-    padding: 20px 30px;
+    padding: 20px 60px;
     height: 160px;
     top: 0;
     left: 0; /* Asegura que el navbar comienza desde el borde izquierdo */
@@ -140,7 +132,7 @@ body {
 
 .main-container {
     flex: 1;
-    margin-top: 160px; /* Adjust based on navbar height to prevent content overlap */
+    margin-top: 80px; /* Ajusta basado en la altura del navbar */
     width: 100%;
     box-sizing: border-box; /* Include padding in width */
     display: flex;

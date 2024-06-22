@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
+  
 </head>
 <body>
+<div class="background-image"></div>
+    <div class="overlay"></div>
+    <div class="content">
     <?php include 'navbar.html'; ?>
     
     <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
