@@ -44,10 +44,18 @@ body {
     color: rgb(0, 0, 0);
 }
 
+.brand-title a {
+    display: inline-block;
+}
+
 .brand-title img {
     height: 140px; /* Adjust height for the logo */
     margin-right: 10px; /* Space between logo and text */
-    transition: height 0.3s ease; /* Smooth transition for the logo */
+    transition: height 0.3s ease, transform 0.3s ease; /* Smooth transition for the logo */
+}
+
+.brand-title a:hover img {
+    transform: scale(1.1); /* Slightly enlarge the logo on hover */
 }
 
 .navbar-links {
