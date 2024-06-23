@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +13,6 @@
             margin-bottom: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
         .validate-button {
             background-color: #007bff;
             color: white;
@@ -25,7 +23,6 @@
         }
     </style>
 </head>
-
 <body>
     <h1>Rifa App</h1>
     <label for="rifaId">Rifa ID:</label>
@@ -60,9 +57,15 @@
                             validateButton.className = 'validate-button';
                             validateButton.addEventListener('click', function () {
                                 changeOrderStatus(order.OrderId, rifaId, 1);
-
+                            });
+                            const infoButton = document.createElement('button');
+                            infoButton.textContent = 'Generar Información';
+                            infoButton.className = 'validate-button';
+                            infoButton.addEventListener('click', function () {
+                                generateOrderInfo(order.OrderId);
                             });
                             li.appendChild(validateButton);
+                            li.appendChild(infoButton);
                             paidOrdersUl.appendChild(li);
                         });
                         ordenesDiv.appendChild(paidOrdersUl);
@@ -80,7 +83,7 @@
                             validateButton.textContent = 'Validar Pago';
                             validateButton.className = 'validate-button';
                             validateButton.addEventListener('click', function () {
-                                changeOrderStatus(order.OrderId, rifaId, 2)
+                                changeOrderStatus(order.OrderId, rifaId, 2);
                             });
                             li.appendChild(validateButton);
                             pendingOrdersUl.appendChild(li);
@@ -100,7 +103,7 @@
                             validateButton.textContent = 'Validar Pago';
                             validateButton.className = 'validate-button';
                             validateButton.addEventListener('click', function () {
-                                changeOrderStatus(order.OrderId, rifaId, 2)
+                                changeOrderStatus(order.OrderId, rifaId, 2);
                             });
                             li.appendChild(validateButton);
                             deletedOrdersUl.appendChild(li);
@@ -110,7 +113,6 @@
                 })
                 .catch(error => console.log('Error: ', error));
         });
-
 
         function changeOrderStatus(orderId, rifaId, status) {
             fetch('changeOrderStatus.php', {
@@ -131,7 +133,26 @@
                 })
                 .catch(error => console.error('Error:', error));
         }
+
+        function generateOrderInfo(orderId) {
+            fetch('getOrderDetails.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ orderId: orderId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const numbers = data.numbers.map(num => num.Number).join(', ');
+                        alert(`ID: ${data.order.OrderId}\nNombre: ${data.order.PersonName}\nTeléfono: ${data.order.PersonPhone}\nFecha de Apartado: ${data.order.OrderDate}\nFecha de Pago: ${data.order.PaidDate}\nRifa: ${data.order.RifaName}\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: ${numbers}`);
+                    } else {
+                        alert('Error al obtener la información de la orden.');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
     </script>
 </body>
-
 </html>
