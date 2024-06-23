@@ -1,6 +1,7 @@
-.footer {
-    background-color: #000000;
-    color: white;
+/* Estilos para el footer */
+body .footer {
+    background-color: #000;
+    color: #fff;
     text-align: center;
     padding: 20px;
     width: 100%;
@@ -11,32 +12,48 @@
     margin-top: auto; /* Push footer to bottom if content is less */
 }
 
-.footer-content {
+body .footer-content {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.footer-content h2 {
-    font-size: 1.5em;
+body .footer-content h2 {
+    font-size: 2.5em;
     margin-bottom: 10px;
 }
 
-.footer-content p {
+body .footer-content p {
     margin: 5px 0;
-    size: 10%;
+    align-items: right;
 }
 
-.footer-content a {
+body .footer-content a {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
 }
 
-.footer-content a:hover {
+body .footer-content a:hover {
     text-decoration: underline;
 }
 
-.footer-content .fa-whatsapp {
+body .footer-content .fa-whatsapp {
     color: #25d366;
     margin-right: 10px;
+}
+
+body .contact-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body .whatsapp-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 2px;
+}
+
+body .phone-number {
+    font-size: 3em;
 }

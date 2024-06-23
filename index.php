@@ -27,15 +27,21 @@
                 <div class="carousel">
                     <div class="slide">
                        <img src="images/camioneta1.jpg" alt="Slide 1">
-                       <button class="buy-button">COMPRAR BOLETO</button>
+                       <a href="/RifasEconomicasTamp/sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
+
+
                     </div>
                     <div class="slide">
                         <img src="images/camioneta2.jpg" alt="Slide 2">
-                        <button class="buy-button">COMPRAR BOLETO</button>
+                        <a href="/RifasEconomicasTamp/sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
+
+
                     </div>
                     <div class="slide">
                         <img src="images/camioneta3.jpg" alt="Slide 3">
-                        <button class="buy-button" href="/RifasEconomicasTamp/sections/comprar_boletos.php">COMPRAR BOLETO</button>
+                        <a href="/RifasEconomicasTamp/sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
+
+
                     </div>
                 </div>
                 <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -126,7 +132,8 @@
                         <h2>20 BOLETOS POR $140</h2>
                         <h2>40 BOLETOS POR $280</h2>
                     </div>
-                    <button class="buy-button" href="/RifasEconomicasTamp/sections/comprar_boletos.php">COMPRAR BOLETO</button>
+                    <a href="/RifasEconomicasTamp/sections/comprar_boletos.php" class="buy-button">COMPRAR BOLETO</a>
+
                 </div>
 
             <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
