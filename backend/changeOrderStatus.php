@@ -21,7 +21,17 @@ if ($conn->connect_error) {
 }
 
 // Actualizar el estado de la orden
-$query = "UPDATE orders SET Status = ? WHERE OrderId = ? AND RifaId = ?";
+
+$query = "";
+if($newStatus == 2)
+{
+    $query = "UPDATE orders SET Status = ?, PaidDate = NOW() WHERE OrderId = ? AND RifaId = ?";
+}
+else
+{
+    $query = "UPDATE orders SET Status = ?, PaidDate = null WHERE OrderId = ? AND RifaId = ?";
+}
+
 $stmt = $conn->prepare($query);
 $stmt->bind_param("iii", $newStatus, $orderId, $rifaId);
 $stmt->execute();
