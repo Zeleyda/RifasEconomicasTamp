@@ -12,3 +12,10 @@ function moveSlide(n) {
     const carousel = document.querySelector(".carousel");
     carousel.style.transform = `translateX(${-slideIndex * 100}%)`;
 }
+
+function autoSlide() {
+    moveSlide(1);
+}
+
+// Cambia la imagen cada 5 segundos
+setInterval(autoSlide, 5000);
