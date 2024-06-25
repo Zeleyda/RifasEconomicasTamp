@@ -102,7 +102,7 @@
 
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" onclick="toggleAccordion(2)">
+                                <button class="accordion-button collapsed" type="button" onclick="toggleAccordion(3)">
                                     ¿CUANTO TIEMPO TENGO PARA PAGAR BOLETOS APARTADOS?
                                 </button>
                             </h2>
