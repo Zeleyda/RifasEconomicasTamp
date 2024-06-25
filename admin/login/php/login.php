@@ -1,25 +1,11 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Hardcoded credentials for demonstration purposes
-    $valid_username = 'admin';
-    $valid_password = 'password123';
-
-    if ($username == $valid_username && $password == $valid_password) {
-        $_SESSION['loggedin'] = true;
-        $_SESSION['username'] = $username;
-        header('Location: welcome.php');
-        exit;
-    } else {
-        $error = 'Invalid username or password';
-    }
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
+    header('Location: welcome.php');
+    exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,19 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="login-header">
             <img src="../icons/logotipoempresa.png" alt="Envelope Icon">
         </div>
-        <form class="login-form" action="login.php" method="post">
+        <form class="login-form" action="../../../backend/login.php" method="post">
             <div class="input-container">
                 <input type="text" name="username" placeholder="Username" required>
             </div>
             <div class="input-container">
                 <input type="password" name="password" placeholder="Password" required>
             </div>
-            <?php if (isset($error)): ?>
-                <p style="color: red;"><?php echo $error; ?></p>
+            <?php if (isset($_GET['error'])): ?>
+                <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
             <?php endif; ?>
             <button type="submit">LOGIN</button>
         </form>
     </div>
 </body>
 </html>
-
