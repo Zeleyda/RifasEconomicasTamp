@@ -18,4 +18,4 @@ function autoSlide() {
 }
 
 // Cambia la imagen cada 5 segundos
-setInterval(autoSlide, 5000);
+setInterval(autoSlide, 2800);

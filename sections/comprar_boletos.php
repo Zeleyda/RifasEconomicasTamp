@@ -9,6 +9,89 @@
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/formulario.css">
     <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
     <title>RIFAS ECONOMICAS TAMPICO</title>
+    <style>
+        .gif-button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .gif-button {
+            background: white; /* Fondo blanco */
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .gif-button img {
+            width: 100%;
+            max-width: 300px; /* Ajustar el tamaño máximo para la vista de escritorio */
+            height: auto;
+        }
+        @media (max-width: 600px) {
+            .gif-button img {
+                max-width: 200px; /* Ajustar el tamaño máximo para la vista móvil */
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 50px; /* Ajuste para que el modal no esté cubierto por el navbar */
+            width: 100%;
+            height: calc(100% - 50px); /* Ajuste para la altura del modal */
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 20px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 40% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .numeros-generados {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #agregarLista {
+            display: block;
+            margin: 20px auto 0; /* Centrando el botón y separándolo de la sección de números generados */
+        }
+
+        @media (max-width: 600px) {
+            .modal-content {
+                width: 90%; /* Ancho más grande en dispositivos móviles */
+                height: auto;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="background-image"></div>
@@ -24,6 +107,11 @@
                 <input type="text" placeholder="Buscar un boleto del 0 al 50000...">
                 <button>Buscar</button>
             </div>
+            <div class="gif-button-container">
+                <button class="gif-button" id="openFormButton">
+                    <img src="/RifasEconomicasTamp/images/GIFF2.gif" alt="GIF Button">
+                </button>
+            </div>
             <div class="button-container" id="button-container">
                 <!-- Los botones se generarán aquí -->
             </div>
@@ -36,32 +124,40 @@
             <button id="apartar-button">Apartar boletos</button>
         </div>    
         <div id="selected-numbers"></div>
-        <!--<button id="apart-button">Apartar boletos</button>!-->
     </div>
 
-    <!--
-    <div id="formulario-bottomsheet">
-        <button class="close-btn">&times;</button>
-        <h2>LLENA TUS DATOS Y DA CLICK EN APARTAR</h2>
-        <form>
-            <label for="nombre">Nombre Completo</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellidos" required>
-
-            <label for="estado">Estado</label>
-            <select id="estado" name="estado" required>
-                <option value="">Seleccionar...</option>
+    <!-- Modal para seleccionar boletos -->
+    <div id="boletosModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Selecciona la cantidad de boletos y genera tus números de la suerte</h2>
+            <label for="cantidadBoletos">Cantidad de boletos:</label>
+            <select id="cantidadBoletos">
+                <option value="1">1 Boleto</option>
+                <option value="2">2 Boletos</option>
+                <option value="3">3 Boletos</option>
+                <option value="4">4 Boletos</option>
+                <option value="5">5 Boletos</option>
+                <option value="6">6 Boletos</option>
+                <option value="7">7 Boletos</option>
+                <option value="8">8 Boletos</option>
+                <option value="9">9 Boletos</option>
+                <option value="10">10 Boletos</option>
+                <option value="50">50 Boletos</option>
+                <option value="100">100 Boletos</option>
             </select>
-
-            <label for="celular">Número de Celular (WhatsApp)</label>
-            <input type="text" id="celular" name="celular" placeholder="10 dígitos sin espacios" required>
-
-            <p>¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!</p>
-            <p>Tu boleto sólo dura 24 horas apartado</p>
-
-            <button type="submit">Apartar Boleto</button>
-        </form>
+            <p>Haz clic en la imagen para generar tus números de la suerte:</p>
+            <div class="gif-button-container">
+                <button class="gif-button" id="generarNumerosButton">
+                    <img id="generarNumerosGif" src="/RifasEconomicasTamp/images/rul_2.png" alt="Generar Números">
+                </button>
+            </div>
+            <div id="numerosGenerados" class="numeros-generados" style="display:none;">
+                <!-- Los números generados se mostrarán aquí -->
+            </div>
+            <button id="agregarLista" style="display:none;">Agregar a la lista</button>
+        </div>
     </div>
-    !-->
 
     <!-- Modal para pedir datos -->
     <div id="apartar-modal" class="modal">
@@ -123,5 +219,68 @@
 <?php include 'footer.html'; ?>
 <script src="/RifasEconomicasTamp/js/boletos.js"></script>
 <script src="/RifasEconomicasTamp/js/formulario.js"></script> <!-- Nuevo script -->
+<script>
+    // Abrir y cerrar modal
+    document.getElementById('openFormButton').onclick = function() {
+        document.getElementById('boletosModal').style.display = 'block';
+    }
+
+    document.querySelectorAll('.close').forEach(function(element) {
+        element.onclick = function() {
+            document.getElementById('boletosModal').style.display = 'none';
+            document.getElementById('apartar-modal').style.display = 'none';
+        }
+    });
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('boletosModal')) {
+            document.getElementById('boletosModal').style.display = 'none';
+        }
+        if (event.target == document.getElementById('apartar-modal')) {
+            document.getElementById('apartar-modal').style.display = 'none';
+        }
+    }
+
+    // Generar números de la suerte al hacer clic en el GIF
+    document.getElementById('generarNumerosButton').onclick = function() {
+        var gif = document.getElementById('generarNumerosGif');
+        
+        gif.src = '/RifasEconomicasTamp/images/rul_1.gif'; // Cambiar al GIF animado
+
+        var cantidad = document.getElementById('cantidadBoletos').value;
+        var numerosGenerados = '';
+        for (var i = 0; i < cantidad; i++) {
+            numerosGenerados += Math.floor(Math.random() * 50000) + 1;
+            if (i < cantidad - 1) {
+                numerosGenerados += ' - ';
+            }
+        }
+
+        // Duración de la animación del GIF en milisegundos
+        var gifDuration = 3000; // Ajustar según la duración real del GIF
+
+        setTimeout(function() {
+            gif.src = '/RifasEconomicasTamp/images/rul_2.png'; // Volver a la imagen estática
+
+            document.getElementById('numerosGenerados').innerHTML = '<p>Números Generados: ' + numerosGenerados + '</p>';
+            document.getElementById('numerosGenerados').style.display = 'block';
+            document.getElementById('agregarLista').style.display = 'block';
+        }, gifDuration);
+    }
+
+    // Agregar a la lista
+    document.getElementById('agregarLista').onclick = function() {
+        var numeros = document.getElementById('numerosGenerados').innerText;
+        if (numeros) {
+            var lista = document.getElementById('selected-numbers');
+            var newItem = document.createElement('div');
+            newItem.innerText = numeros;
+            lista.appendChild(newItem);
+            document.getElementById('boletosModal').style.display = 'none';
+        } else {
+            alert('Primero debe generar los números.');
+        }
+    }
+</script>
 </body>
 </html>
