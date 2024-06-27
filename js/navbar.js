@@ -1,30 +1,20 @@
-function toggleMenu() {
-    var navbarLinks = document.getElementById('navbarLinks');
-    if (navbarLinks.classList.contains('show')) {
-        navbarLinks.classList.remove('show');
-        setTimeout(function () {
-            navbarLinks.style.display = 'none';
-        }, 300); // Esperar a que termine la animación antes de ocultar
+// navbar.js
+
+// Función para cambiar el tamaño del navbar en función del scroll
+function handleNavbarShrink() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-shrink');
     } else {
-        navbarLinks.style.display = 'block';
-        setTimeout(function () {
-            navbarLinks.classList.add('show');
-        }, 10); // Asegurar que se agrega la clase después de que el bloque sea visible
+        navbar.classList.remove('navbar-shrink');
     }
 }
 
-let lastScrollTop = 0;
+// Escuchar el evento de scroll
+window.addEventListener('scroll', handleNavbarShrink);
 
-window.addEventListener("scroll", function () {
-    const navbar = document.querySelector(".navbar");
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (currentScroll > lastScrollTop) {
-        // Scroll down
-        navbar.classList.add("navbar-shrink");
-    } else {
-        // Scroll up
-        navbar.classList.remove("navbar-shrink");
-    }
-    lastScrollTop = currentScroll;
-});
+// Código para el menú responsive
+function toggleMenu() {
+    const navbarLinks = document.getElementById('navbarLinks');
+    navbarLinks.classList.toggle('show');
+}

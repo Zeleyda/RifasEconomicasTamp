@@ -5,6 +5,11 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth; /* Para un desplazamiento suave */
+}
+
+
 body {
     margin: 0;
     padding-right: 40;
@@ -20,23 +25,24 @@ body {
     padding: 20px 60px;
     height: 160px;
     top: 0;
-    left: 0; /* Asegura que el navbar comienza desde el borde izquierdo */
-    right: 0; /* Asegura que el navbar se extiende hasta el borde derecho */
-    width: 100%; /* Ocupar todo el ancho de la página */
+    left: 0;
+    right: 0;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #000000; /* Fixed color */
-    z-index: 1000; /* Ensure the navbar stays on top of other content */
-    box-sizing: border-box; /* Include padding in width */
-    border-top: 25px solid green; /* Top border color */
-    border-bottom: 25px solid green; /* Bottom border color */
-    transition: height 0.3s ease, padding 0.3s ease; /* Add transition for smooth animation */
+    background-color: #000000;
+    z-index: 1000;
+    box-sizing: border-box;
+    border-top: 25px solid green;
+    border-bottom: 25px solid green;
+    transition: height 0.3s ease, padding 0.3s ease;
 }
 
+/* Estilo para navbar encogido */
 .navbar-shrink {
-    height: 100px; /* Adjust the height when navbar is shrunk */
-    padding: 10px 30px; /* Adjust the padding when navbar is shrunk */
+    height: 100px;
+    padding: 10px 30px;
 }
 
 .brand-title {

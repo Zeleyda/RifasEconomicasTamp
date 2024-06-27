@@ -11,10 +11,14 @@
     <title>RIFAS ECONOMICAS TAMPICO</title>
     <style>
         .gif-button-container {
+            color: white;
+            background-color: #fefefe;
+            background: white;
             text-align: center;
             margin: 20px 0;
         }
         .gif-button {
+            color: white;
             background: white; /* Fondo blanco */
             border: none;
             cursor: pointer;
@@ -22,12 +26,14 @@
             border-radius: 10px;
         }
         .gif-button img {
+            background: white;
             width: 100%;
             max-width: 300px; /* Ajustar el tamaño máximo para la vista de escritorio */
             height: auto;
         }
         @media (max-width: 600px) {
             .gif-button img {
+                background: white;
                 max-width: 200px; /* Ajustar el tamaño máximo para la vista móvil */
             }
         }
@@ -37,24 +43,27 @@
             display: none;
             position: fixed;
             z-index: 1;
-            left: 0;
-            top: 50px; /* Ajuste para que el modal no esté cubierto por el navbar */
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
             width: 100%;
-            height: calc(100% - 50px); /* Ajuste para la altura del modal */
-            overflow: auto;
-            background-color: rgb(0,0,0);
+            height: 100%;
+            overflow: hidden;
             background-color: rgba(0,0,0,0.4);
-            padding-top: 20px;
+            padding-top: 0;
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 40% auto;
+            margin: auto;
             padding: 20px;
-            border: 1px solid #888;
+            border: 1px solid #fefefe;
             width: 80%;
             max-width: 600px;
             height: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .close {
