@@ -15,7 +15,7 @@ html {
 
 body {
     margin: 0;
-    padding-right: 40;
+    
     font-family: "Poppins-SemiBold", sans-serif;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@ body {
 .navbar-links {
     display: none; /* Hide by default */
     position: fixed; /* Fixed position */
-    top: 137px; /* Position below navbar */
+    top: 0; /* Cover the navbar */
     left: 0;
     width: 100%;
     background-color: #000000; /* Same color as navbar */
@@ -79,10 +79,6 @@ body {
     opacity: 0; /* Para la animación de desvanecimiento */
     transform: translateY(-20px); /* Para la animación de desplazamiento */
     transition: opacity 0.3s ease, transform 0.3s ease; /* Añade transición para la animación */
-}
-
-.navbar-shrink .navbar-links {
-    top: 117px; /* Ajusta el top cuando el navbar está retraído */
 }
 
 .navbar-links.show {
@@ -100,7 +96,7 @@ body {
 }
 
 .navbar-links li {
-    margin: 10px 0; /* Margin for vertical spacing */
+    margin: 10px 0; /* Increased margin for vertical spacing */
 }
 
 .navbar-links a {
@@ -108,8 +104,9 @@ body {
     text-decoration: none;
     color: white;
     font-size: 1.2em;
-    padding: 10px 20px; /* Padding for better clickability */
+    padding: 15px 20px; /* Increased padding for better clickability */
     display: block;
+    text-align: left; /* Align text to left */
 }
 
 .toggle-button {
@@ -118,6 +115,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 0;
+    z-index: 1001; /* Ensure the button stays on top */
 }
 
 .menu-icon {
