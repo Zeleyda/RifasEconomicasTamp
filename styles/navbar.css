@@ -13,7 +13,6 @@ html {
     scroll-behavior: smooth; /* Para un desplazamiento suave */
 }
 
-
 body {
     margin: 0;
     padding-right: 40;
@@ -122,8 +121,42 @@ body {
 }
 
 .menu-icon {
-    width: 30px; /* Ajusta el tamaño del ícono según tus necesidades */
-    height: 30px;
+    width: 40px; /* Ajusta el tamaño del ícono según tus necesidades */
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-icon path {
+    stroke: #ffffff;
+    stroke-width: 5;
+    stroke-linecap: round;
+    transition: all 0.5s;
+    transform: rotate(0deg);
+    will-change: transform, opacity;
+    transform-origin: center;
+}
+
+.menu-link:hover path,
+.menu-link:focus path,
+.menu-link:active path {
+    stroke: rgb(255, 255, 255);
+}
+
+.menu-icon.active path:nth-child(1) {
+    opacity: 0;
+}
+
+.menu-icon.active path:nth-child(4) {
+    opacity: 0;
+}
+
+.menu-icon.active path:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.menu-icon.active path:nth-child(3) {
+    transform: rotate(-45deg);
 }
 
 @media (min-width: 768px) {

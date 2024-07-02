@@ -19,5 +19,7 @@ window.addEventListener('scroll', handleNavbarShrink);
 // Código para el menú responsive
 function toggleMenu() {
     const navbarLinks = document.getElementById('navbarLinks');
+    const menuIcon = document.querySelector('.menu-icon');
     navbarLinks.classList.toggle('show');
+    menuIcon.classList.toggle('active');
 }
