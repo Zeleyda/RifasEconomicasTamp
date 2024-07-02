@@ -17,6 +17,8 @@
     <?php include 'navbar.html'; ?>
     <h3></h3>
     <h3></h3>
+    <h3></h3>
+    <h3></h3>
     
             <div class="info-container" id="info1-container">
             <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>

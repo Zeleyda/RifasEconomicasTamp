@@ -1,2 +1,7 @@
-# RifasEconomicasTamp
-Aplicación web para rifas.
+# RIFAS ECONOMICAS TAMPICO
+
+Aplicación web para rifas de vehiculos.
+
+
+
+
