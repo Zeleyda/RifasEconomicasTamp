@@ -89,12 +89,16 @@
         }
 
         .numeros-generados {
-            background-color: green;
-            color: white;
-            padding: 10px;
-            margin-top: 20px;
-            text-align: center;
-        }
+    background-color: green;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+    word-wrap: break-word; /* Permitir que el texto se ajuste y salte de línea */
+    white-space: pre-wrap; /* Mantener saltos de línea y ajustar texto */
+    max-width: 100%; /* Asegurar que el ancho máximo no exceda el contenedor */
+}
+
 
         #agregarLista {
             display: block;
