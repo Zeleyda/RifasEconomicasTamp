@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('apartar-modal');
     const closeModal = document.querySelector('.modal .close');
     const form = document.getElementById('apartar-form');
+    const generateNumbersButton = document.getElementById('generarNumerosButton');
 
     let occupiedNumbers = [];
     let maxNumbers = 50000; // Valor por defecto
@@ -103,6 +104,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function randomNumbers(){
+        var gif = document.getElementById('generarNumerosGif');
+        gif.src = '/RifasEconomicasTamp/images/rul_1.gif'; // Cambiar al GIF animado
+        var cantidad = document.getElementById('cantidadBoletos').value;
+        
+
+        // Duración de la animación del GIF en milisegundos
+        var gifDuration = 3000; // Ajustar según la duración real del GIF
+
+        if (cantidad == 100) {
+            document.getElementById('boletosModalContent').classList.add('scrollable');
+        } else {
+            document.getElementById('boletosModalContent').classList.remove('scrollable');
+        }
+
+        setTimeout(function() {
+            gif.src = '/RifasEconomicasTamp/images/rul_2.png'; // Volver a la imagen estática
+        var cantidad = document.getElementById('cantidadBoletos').value;
+        for(let i=0; i<cantidad; i++){
+            var searchValue = Math.floor(Math.random() * maxNumbers) + 1;
+            
+            const buttonText = `0000${searchValue}`.slice(-4);
+            const button = Array.from(buttonContainer.children).find(b => b.textContent === buttonText);
+
+            if (!button) {
+                alert("Número no encontrado.");
+                return;
+            }
+
+            if (occupiedNumbers.includes(searchValue)) {
+                cantidad++;
+                
+            } else {
+                button.classList.add('ticket-container');
+                updateSelectedNumbers();
+            }
+        }
+        document.getElementById('boletosModal').style.display = 'none';
+
+    }, gifDuration);
+
+    }
+
     // Function to handle search
     function handleSearch() {
         const searchValue = parseInt(searchInput.value, 10);
@@ -167,6 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error:', error));
     }
+
+    generateNumbersButton.addEventListener('click', randomNumbers);
 
     searchButton.addEventListener('click', handleSearch);
     apartarButton.addEventListener('click', () => {

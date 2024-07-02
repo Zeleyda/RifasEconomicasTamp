@@ -336,55 +336,6 @@
         }
     }
 
-    // Generar números de la suerte al hacer clic en el GIF
-    document.getElementById('generarNumerosButton').onclick = function() {
-        var gif = document.getElementById('generarNumerosGif');
-        
-        gif.src = '/RifasEconomicasTamp/images/rul_1.gif'; // Cambiar al GIF animado
-
-        var cantidad = document.getElementById('cantidadBoletos').value;
-        var numerosGenerados = '';
-        for (var i = 0; i < cantidad; i++) {
-            numerosGenerados += Math.floor(Math.random() * 50000) + 1;
-            if (i < cantidad - 1) {
-                numerosGenerados += ' - ';
-            }
-        }
-
-        // Duración de la animación del GIF en milisegundos
-        var gifDuration = 3000; // Ajustar según la duración real del GIF
-
-        if (cantidad == 100) {
-            document.getElementById('boletosModalContent').classList.add('scrollable');
-        } else {
-            document.getElementById('boletosModalContent').classList.remove('scrollable');
-        }
-
-        setTimeout(function() {
-            gif.src = '/RifasEconomicasTamp/images/rul_2.png'; // Volver a la imagen estática
-
-            document.getElementById('numerosGenerados').innerHTML = '<p>Números Generados: ' + numerosGenerados + '</p>';
-            document.getElementById('numerosGenerados').style.display = 'block';
-            document.getElementById('agregarLista').style.display = 'block';
-        }, gifDuration);
-    }
-
-    // Agregar a la lista
-    document.getElementById('agregarLista').onclick = function() {
-        var numeros = document.getElementById('numerosGenerados').innerText;
-        if (numeros) {
-            var lista = document.getElementById('selected-numbers');
-            var newItem = document.createElement('div');
-            newItem.innerText = numeros;
-            lista.appendChild(newItem);
-            document.getElementById('boletosModal').style.display = 'none';
-            document.body.classList.remove('modal-open');
-            document.getElementById('boletosModalContent').classList.remove('scrollable');
-        } else {
-            alert('Primero debe generar los números.');
-        }
-    }
-
 
     // Mostrar el bottomsheet
     document.getElementById('apartar-button').onclick = function() {
