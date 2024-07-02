@@ -190,7 +190,7 @@
         <div class="container">
             <h1>Buscador de Boletos</h1>
             <div class="search-bar">
-                <input type="text" placeholder="Buscar un boleto del 0 al 50000...">
+                <input type="text" id="searchTxt" placeholder="Buscar un boleto">
                 <button>Buscar</button>
             </div>
             <div class="gif-button-container">

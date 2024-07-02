@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.success) {
                     maxNumbers = data.maxNumbers;
+                    document.getElementById("searchTxt").placeholder = "Selecciona un numero entre 1 y " + maxNumbers;
                     fetchOccupiedNumbers();
                 } else {
                     console.error('Error al obtener el máximo de números:', data.message);
