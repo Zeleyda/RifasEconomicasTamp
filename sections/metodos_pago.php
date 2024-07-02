@@ -17,8 +17,9 @@
     <?php include 'navbar.html'; ?>
     <h3></h3>
     <h3></h3>
-    <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
+    
             <div class="info-container" id="info1-container">
+            <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
                 <div class="info-box payment-box" id="info1">
                     <div class="payment-method">
                         <h3>Depósito OXXO o Transferencia</h3>
