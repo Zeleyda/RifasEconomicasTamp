@@ -28,7 +28,7 @@ $query = "
     FROM numbers n
     JOIN orders o ON n.OrderId = o.OrderId
     WHERE o.RifaId = ?
-    AND (o.Status = 2 OR (o.Status = 1 AND o.OrderDate >= DATE_SUB(NOW(), INTERVAL 2 DAY)))
+    AND (o.Status = 2 OR (o.Status = 1 AND o.OrderDate >= DATE_SUB(NOW(), INTERVAL 1 DAY)))
 ";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $rifaId);

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Boleto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #444;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .container p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles del Boleto</h1>
+        <p><strong>ID:</strong> <span id="orderId"></span></p>
+        <p><strong>Nombre:</strong> <span id="personName"></span></p>
+        <p><strong>Teléfono:</strong> <span id="personPhone"></span></p>
+        <p><strong>Fecha de Apartado:</strong> <span id="orderDate"></span></p>
+        <p><strong>Fecha de Pago:</strong> <span id="paidDate"></span></p>
+        <p><strong>Rifa:</strong> <span id="rifaName"></span></p>
+        <p><strong>Descripción:</strong> <span id="rifaDescription"></span></p>
+        <p><strong>Fecha de Fin:</strong> <span id="endDate"></span></p>
+        <p><strong>Números:</strong> <span id="numbers"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener parámetros de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('paramId_rf');
+            if (orderId) {
+                // Hacer una solicitud a la API
+                fetch('../backend/getOrderDetails.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ orderId: orderId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const order = data.order;
+                        const numbers = data.numbers.map(num => num.Number).join(', ');
+
+                        document.getElementById('orderId').textContent = order.OrderId;
+                        document.getElementById('personName').textContent = order.PersonName;
+                        document.getElementById('personPhone').textContent = order.PersonPhone;
+                        document.getElementById('orderDate').textContent = order.OrderDate;
+                        document.getElementById('paidDate').textContent = order.PaidDate;
+                        document.getElementById('rifaName').textContent = order.RifaName;
+                        document.getElementById('rifaDescription').textContent = order.RifaDescription;
+                        document.getElementById('endDate').textContent = order.EndDate;
+                        document.getElementById('numbers').textContent = numbers;
+                    } else {
+                        alert('No se pudo obtener los detalles de la orden');
+                    }
+                })
+                .catch(error => {
+                    window.location.href = '../index.php';
+                    alert('Error al obtener los detalles de la orden');
+                });
+            } else {
+                window.location.href = '../index.php';
+            }
+        });
+    </script>
+</body>
+</html>

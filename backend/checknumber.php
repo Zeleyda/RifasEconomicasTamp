@@ -44,7 +44,7 @@ $query = "
     FROM numbers
     JOIN orders ON numbers.OrderId = orders.OrderId
     WHERE numbers.Number = ? AND orders.RifaId = ?
-    AND ((orders.Status = 1 AND orders.OrderDate >= DATE_SUB(NOW(), INTERVAL 2 DAY))
+    AND ((orders.Status = 1 AND orders.OrderDate >= DATE_SUB(NOW(), INTERVAL 1 DAY))
     OR orders.Status = 2)
 ";
 $stmt = $conn->prepare($query);

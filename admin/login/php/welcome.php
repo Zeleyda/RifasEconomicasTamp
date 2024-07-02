@@ -155,7 +155,11 @@ if (!isset($_SESSION['loggedin'])) {
                 .then(data => {
                     if (data.success) {
                         const numbers = data.numbers.map(num => num.Number).join(', ');
-                        alert(`ID: ${data.order.OrderId}\nNombre: ${data.order.PersonName}\nTeléfono: ${data.order.PersonPhone}\nFecha de Apartado: ${data.order.OrderDate}\nFecha de Pago: ${data.order.PaidDate}\nRifa: ${data.order.RifaName}\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: ${numbers}`);
+                        const message = `Nombre: ${data.order.PersonName}\nTeléfono: +52${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\nFecha de Pago: ${data.order.PaidDate}\nRifa: ${data.order.RifaName}\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: ${numbers} \nLink: http://localhost/rifaseconomicastamp/sections/informacion?paramId_rf=${data.order.OrderId}`;
+                        const whatsappURL = `https://wa.me/+52${data.order.PersonPhone.replaceAll(/\s/g,'')}?text=${encodeURIComponent(message)}`;
+                        console.log(whatsappURL);
+                        //window.location.href = whatsappURL;
+                        window.open(whatsappURL, "_blank");
                     } else {
                         alert('Error al obtener la información de la orden.');
                     }
