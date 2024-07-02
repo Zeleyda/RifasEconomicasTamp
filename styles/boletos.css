@@ -131,6 +131,7 @@ body {
     bottom: 0; /* Mostrar el bottom sheet */
 }
 
+
 .bottomsheet-header {
     display: flex;
     justify-content: center;
@@ -138,6 +139,25 @@ body {
     gap: 10px;
     margin-bottom: 10px;
 }
+
+
+.bottomsheet-header .close-bottomsheet {
+    position: absolute;
+    padding: -10%;
+    top: 10%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    background: none;
+    border: none;
+}
+
+
+
+
+
+
 
 #selected-numbers {
     text-align: center;
@@ -236,6 +256,18 @@ footer {
 }
 
 @media (max-width: 480px) {
+
+    .bottomsheet-header {
+        justify-content: center; /* Centrar en vistas móviles */
+        padding: 10px;
+    }
+    
+    .bottomsheet-header .close-bottomsheet {
+        right: 10px;
+        top: 10px;
+        transform: none; /* Eliminar transform para dispositivos móviles */
+    }
+
     .main-content {
         padding: 20px 0;
     }
@@ -256,6 +288,7 @@ footer {
 
     .search-bar button {
         padding: 10px;
+        height: 40%;
     }
 
     .button-container {
@@ -271,6 +304,8 @@ footer {
     #selected-numbers {
         grid-template-columns: repeat(4, 1fr); /* 4 columnas en vista móvil */
         width: calc(90% - 20px); /* Reducir ancho para evitar recorte */
-        padding: 0 10px; /* Añadir padding lateral */
+        padding: 0 50px; /* Añadir padding lateral */
     }
+
+ 
 }

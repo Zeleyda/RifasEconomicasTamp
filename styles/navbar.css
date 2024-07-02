@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 @font-face {
     font-family: 'Poppins-SemiBold';
     src: url('/RifasEconomicasTamp/fonts/Poppins-SemiBold.ttf') format('truetype');
@@ -76,6 +80,10 @@ body {
     opacity: 0; /* Para la animación de desvanecimiento */
     transform: translateY(-20px); /* Para la animación de desplazamiento */
     transition: opacity 0.3s ease, transform 0.3s ease; /* Añade transición para la animación */
+}
+
+.navbar-shrink .navbar-links {
+    top: 117px; /* Ajusta el top cuando el navbar está retraído */
 }
 
 .navbar-links.show {

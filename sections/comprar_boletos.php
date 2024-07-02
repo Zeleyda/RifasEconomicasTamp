@@ -11,29 +11,32 @@
     <title>RIFAS ECONOMICAS TAMPICO</title>
     <style>
         .gif-button-container {
-            color: white;
-            background-color: #fefefe;
-            background: white;
+            border: none; /* Eliminar borde */
+            background: none; /* Sin fondo */
+            cursor: pointer; /* Mostrar cursor de mano */
+            color: inherit; /* Mantener color de texto */
             text-align: center;
             margin: 20px 0;
         }
         .gif-button {
-            color: white;
-            background: white; /* Fondo blanco */
-            border: none;
-            cursor: pointer;
+            border: none; /* Eliminar borde */
+            background: none; /* Sin fondo */
+            cursor: pointer; /* Mostrar cursor de mano */
+            color: inherit; /* Mantener color de texto */
             padding: 10px;
             border-radius: 10px;
         }
         .gif-button img {
-            background: white;
+            border: none; /* Eliminar borde */
+            background: none; /* Sin fondo */
+            color: inherit; /* Mantener color de texto */
             width: 100%;
             max-width: 300px; /* Ajustar el tamaño máximo para la vista de escritorio */
             height: auto;
         }
         @media (max-width: 600px) {
             .gif-button img {
-                background: white;
+               
                 max-width: 200px; /* Ajustar el tamaño máximo para la vista móvil */
             }
         }
@@ -42,7 +45,7 @@
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 1000; /* Asegurar que esté por encima de todos los componentes */
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
@@ -64,6 +67,11 @@
             position: relative;
             top: 50%;
             transform: translateY(-50%);
+        }
+
+        .modal-content.scrollable {
+            height: 80%; /* Ajustar según sea necesario */
+            overflow-y: auto;
         }
 
         .close {
@@ -91,6 +99,10 @@
         #agregarLista {
             display: block;
             margin: 20px auto 0; /* Centrando el botón y separándolo de la sección de números generados */
+            border: none; /* Eliminar borde */
+            background: none; /* Sin fondo */
+            cursor: pointer; /* Mostrar cursor de mano */
+            color: inherit; /* Mantener color de texto */
         }
 
         @media (max-width: 600px) {
@@ -99,6 +111,71 @@
                 height: auto;
                 padding: 10px;
             }
+        }
+
+        /* Ajustes para navbar y bottomsheet */
+        .navbar {
+            z-index: 500;
+        }
+        
+        #selected-numbers-bottomsheet {
+            z-index: 500;
+        }
+
+        /* Ajustes responsivos adicionales */
+        @media (max-width: 600px) {
+            .main-content h1 {
+                font-size: 1.5em;
+            }
+            .search-bar {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .search-bar input {
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+            .search-bar button {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .gif-button-container {
+                margin: 10px 0;
+            }
+            .modal-content {
+                padding: 10px;
+                max-width: 90%;
+            }
+            .modal-content h2 {
+                font-size: 1.2em;
+            }
+            .modal-content label,
+            .modal-content select,
+            .modal-content input,
+            .modal-content button {
+                width: 100%;
+                box-sizing: border-box;
+                margin: 5px 0;
+            }
+            .bottomsheet-header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .bottomsheet-header h2 {
+                margin-bottom: 10px;
+            }
+            .bottomsheet-header button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Bloquear el scroll cuando se abre un modal */
+        body.modal-open {
+            overflow: hidden;
         }
     </style>
 </head>
@@ -118,7 +195,7 @@
             </div>
             <div class="gif-button-container">
                 <button class="gif-button" id="openFormButton">
-                    <img src="/RifasEconomicasTamp/images/GIFF2.gif" alt="GIF Button">
+                    <img src="/RifasEconomicasTamp/images/mapache.gif" alt="GIF Button">
                 </button>
             </div>
             <div class="button-container" id="button-container">
@@ -130,15 +207,18 @@
     <div id="selected-numbers-bottomsheet">
         <div class="bottomsheet-header">
             <h2>Boletos Seleccionados</h2>
+           
+
             <button id="apartar-button">Apartar boletos</button>
+            <button class="close-bottomsheet">&times;</button>
         </div>    
         <div id="selected-numbers"></div>
     </div>
 
     <!-- Modal para seleccionar boletos -->
     <div id="boletosModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+        <div class="modal-content" id="boletosModalContent">
+        <span class="close">&times;</span>
             <h2>Selecciona la cantidad de boletos y genera tus números de la suerte</h2>
             <label for="cantidadBoletos">Cantidad de boletos:</label>
             <select id="cantidadBoletos">
@@ -232,21 +312,27 @@
     // Abrir y cerrar modal
     document.getElementById('openFormButton').onclick = function() {
         document.getElementById('boletosModal').style.display = 'block';
+        document.body.classList.add('modal-open');
     }
 
     document.querySelectorAll('.close').forEach(function(element) {
         element.onclick = function() {
             document.getElementById('boletosModal').style.display = 'none';
             document.getElementById('apartar-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+            document.getElementById('boletosModalContent').classList.remove('scrollable');
         }
     });
 
     window.onclick = function(event) {
         if (event.target == document.getElementById('boletosModal')) {
             document.getElementById('boletosModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+            document.getElementById('boletosModalContent').classList.remove('scrollable');
         }
         if (event.target == document.getElementById('apartar-modal')) {
             document.getElementById('apartar-modal').style.display = 'none';
+            document.body.classList.remove('modal-open');
         }
     }
 
@@ -268,6 +354,12 @@
         // Duración de la animación del GIF en milisegundos
         var gifDuration = 3000; // Ajustar según la duración real del GIF
 
+        if (cantidad == 100) {
+            document.getElementById('boletosModalContent').classList.add('scrollable');
+        } else {
+            document.getElementById('boletosModalContent').classList.remove('scrollable');
+        }
+
         setTimeout(function() {
             gif.src = '/RifasEconomicasTamp/images/rul_2.png'; // Volver a la imagen estática
 
@@ -286,9 +378,29 @@
             newItem.innerText = numeros;
             lista.appendChild(newItem);
             document.getElementById('boletosModal').style.display = 'none';
+            document.body.classList.remove('modal-open');
+            document.getElementById('boletosModalContent').classList.remove('scrollable');
         } else {
             alert('Primero debe generar los números.');
         }
+    }
+
+
+    // Mostrar el bottomsheet
+    document.getElementById('apartar-button').onclick = function() {
+        document.getElementById('apartar-modal').style.display = 'block';
+        document.body.classList.add('modal-open');
+    }
+
+    // Cerrar el bottomsheet
+    document.querySelector('.close-bottomsheet').onclick = function() {
+        document.getElementById('selected-numbers-bottomsheet').classList.remove('show');
+    }
+
+    // Cerrar modal de datos
+    document.querySelector('#apartar-modal .close').onclick = function() {
+        document.getElementById('apartar-modal').style.display = 'none';
+        document.body.classList.remove('modal-open');
     }
 </script>
 </body>

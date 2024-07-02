@@ -287,10 +287,13 @@
         font-size: 12px;
         padding: 10px;
     }
+
 }
 
 
 @media (max-width: 480px) {
+
+   
     .info-box {
         width: 100%;
         padding: 10px;
@@ -305,10 +308,12 @@
     .pricing-info {
         width: calc(95% - 30px); /* Ajusta el ancho para compensar el padding */
         padding: 36px; 
+        margin-bottom: 90px;
     }
 
     .comprar-boletos-btn {
-        margin-top: 100px;
-        /* Añade un margen superior al botón para separarlo del pricing info */
+       
+        margin-top: 150px;
+        
     }
 }
