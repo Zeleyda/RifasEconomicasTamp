@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = document.querySelector('.modal .close');
     const form = document.getElementById('apartar-form');
     const generateNumbersButton = document.getElementById('generarNumerosButton');
+    const agregarListaButton = document.getElementById('agregarLista');
 
+    var generatedRandomNumbers = [];
     let occupiedNumbers = [];
     let maxNumbers = 50000; // Valor por defecto
     let rifaId = -1; // Asume que tienes un rifaId fijo o puedes obtenerlo dinámicamente
@@ -104,7 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function addRandomToList(){
+        for(let i=0; i<generatedRandomNumbers.length; i++){
+            const buttonText = `0000${generatedRandomNumbers[i]}`.slice(-4);
+            const button = Array.from(buttonContainer.children).find(b => b.textContent === buttonText);
+            button.classList.add('ticket-container');
+        }
+        updateSelectedNumbers();
+        document.getElementById('numerosGenerados').style.display = 'none';
+        document.getElementById('agregarLista').style.display = 'none';
+        document.getElementById('boletosModal').style.display = 'none';
+    }
+
     function randomNumbers(){
+        generatedRandomNumbers = [];
         var gif = document.getElementById('generarNumerosGif');
         gif.src = '/RifasEconomicasTamp/images/rul_1.gif'; // Cambiar al GIF animado
         var cantidad = document.getElementById('cantidadBoletos').value;
@@ -137,11 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 cantidad++;
                 
             } else {
-                button.classList.add('ticket-container');
-                updateSelectedNumbers();
+                //button.classList.add('ticket-container');
+                generatedRandomNumbers.push(searchValue);
+                //updateSelectedNumbers();
             }
         }
-        document.getElementById('boletosModal').style.display = 'none';
+        document.getElementById('numerosGenerados').style.display = 'block';
+        document.getElementById('numerosGenerados').innerHTML = '<p>Números Generados: ' + generatedRandomNumbers + '</p>';
+        document.getElementById('agregarLista').style.display = 'block';
+
 
     }, gifDuration);
 
@@ -213,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     generateNumbersButton.addEventListener('click', randomNumbers);
+    agregarListaButton.addEventListener('click', addRandomToList)
 
     searchButton.addEventListener('click', handleSearch);
     apartarButton.addEventListener('click', () => {
