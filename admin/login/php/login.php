@@ -13,6 +13,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Panel: Iniciar Sesión</title>
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .login-header img {
+            user-drag: none; /* Deshabilitar arrastrado en navegadores webkit */
+            pointer-events: none; /* Deshabilitar eventos del mouse en la imagen */
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
@@ -32,5 +38,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             <button type="submit">Iniciar Sesión</button>
         </form>
     </div>
+
+    <script>
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', function (event) {
+                event.preventDefault();
+            });
+        });
+    </script>
 </body>
 </html>

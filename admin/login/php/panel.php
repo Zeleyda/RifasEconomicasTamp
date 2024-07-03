@@ -80,6 +80,8 @@ if (!isset($_SESSION['loggedin'])) {
             width: 100px;
             height: 100px;
             margin: 0 10px;
+            user-drag: none; /* Deshabilitar arrastrado en navegadores webkit */
+            pointer-events: none; /* Deshabilitar eventos del mouse en la imagen */
         }
         .header-container h1 {
             margin: 0;
@@ -110,6 +112,12 @@ if (!isset($_SESSION['loggedin'])) {
     </div>
 
     <script>
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', function (event) {
+                event.preventDefault();
+            });
+        });
+
         document.getElementById('obtenerOrdenesBtn').addEventListener('click', function () {
             const rifaId = document.getElementById('rifaId').value;
             fetch('../../../backend/getOrders.php', {
