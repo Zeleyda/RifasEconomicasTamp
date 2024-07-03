@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $_SESSION['username'] = $inputUsername;
         $_SESSION['loggedin'] = true;
-        header('Location: ../admin/login/php/welcome.php');
+        header('Location: ../admin/login/php/panel.php');
     } else {
         header('Location: ../admin/login/php/login.php');
     }
