@@ -29,7 +29,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
             <?php if (isset($_GET['error'])): ?>
                 <p style="color: red;"><?php echo htmlspecialchars($_GET['error']); ?></p>
             <?php endif; ?>
-            <button type="submit">LOGIN</button>
+            <button type="submit">Iniciar Sesión</button>
         </form>
     </div>
 </body>
