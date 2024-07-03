@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 messageDiv.style.color = 'green';
             } else {
                 if (data.order) {
-                    showOrderInfo(data.order);
-                } else {
+                    messageDiv.textContent = '';
                     messageDiv.textContent = data.message || 'El número ya está ocupado.';
                     messageDiv.style.color = 'red';
+                    showOrderInfo(data.order);
                 }
             }
         })
