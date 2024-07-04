@@ -135,3 +135,54 @@ ul li {
     margin-top: 0; /* Alinear con la entrada de texto */
 }
 
+
+/* Estilos para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+        margin: 10px;
+        padding: 10px;
+    }
+
+
+    .logout-link, .actualizar-link {
+        float: none;
+        align-content: center;
+        margin: auto 160px;
+    }
+
+    .form-group {
+      
+        padding: 10px 10px;
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+      
+        text-align: left;
+    }
+
+    .form-group input {
+        width: calc(100% - 70px); /* Ajuste para el borde */
+        margin: 5px 0;
+    }
+
+    #obtenerOrdenesBtn, #buscarOrdenesBtn {
+       height: 30px;
+        width: 10px;
+        background-color: #006d4c;
+        color: white;
+        border: none;
+        padding: 10px 35px;
+        border-radius: 3px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;    
+    }
+
+    #obtenerOrdenesBtn img, #buscarOrdenesBtn img {
+        width: 24px;
+        margin-right: 10px;
+    }
+}
