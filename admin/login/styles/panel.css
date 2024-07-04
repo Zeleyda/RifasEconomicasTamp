@@ -24,10 +24,22 @@ h1 {
 .logout-link {
     float: right;
     margin-top: -30px;
-    margin-right: 10px;
+    margin-right: 440px;
+    
     text-decoration: none;
     color: #006d4c;
 }
+
+.actualizar-link {
+    float: right;
+    margin-top: -30px;
+    margin-right: 330px;
+    
+    text-decoration: none;
+    color: #006d4c;
+}
+
+
 
 .order-box {
     border: 1px solid #ccc;
@@ -65,17 +77,29 @@ ul li {
 }
 
 .form-group {
-    margin-bottom: 15px;
+    padding-top: 40px;
+    margin-bottom: 40px;
+    padding-left: 20px;
     display: flex;
     align-items: center;
 }
 
 .form-group label {
+   
     font-weight: bold;
     margin-right: 10px;
 }
 
+.form-group label[for="orderId"] {
+   
+    margin-left: 30px; /* Ajusta el valor según sea necesario */
+}
+
+
+
+
 .form-group input {
+    
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -83,7 +107,25 @@ ul li {
     margin-right: 10px; /* Espacio entre la entrada de texto y el botón */
 }
 
-#obtenerOrdenesBtn {
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-container img {
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    user-drag: none; /* Deshabilitar arrastrado en navegadores webkit */
+    pointer-events: none; /* Deshabilitar eventos del mouse en la imagen */
+}
+.header-container h1 {
+    margin: 0;
+}
+
+
+#obtenerOrdenesBtn, #buscarOrdenesBtn {
     background-color: #006d4c;
     color: white;
     border: none;
