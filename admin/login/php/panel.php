@@ -86,7 +86,7 @@ if (!isset($_SESSION['loggedin'])) {
                         li.appendChild(personPhoneDiv);
 
                         const statusDiv = document.createElement('div');
-                        statusDiv.innerHTML = '<b>Estado:</b> Pagada';
+                        statusDiv.innerHTML = '<b>Estado: Pagada</b>';
                         statusDiv.style.backgroundColor = 'lime';
                         statusDiv.style.padding = '2px 4px';
                         statusDiv.style.display = 'inline-block';
@@ -134,7 +134,7 @@ if (!isset($_SESSION['loggedin'])) {
                         li.appendChild(personPhoneDiv);
 
                         const statusDiv = document.createElement('div');
-                        statusDiv.innerHTML = '<b>Estado:</b> Pendiente';
+                        statusDiv.innerHTML = '<b>Estado:Pendiente</b> ';
                         statusDiv.style.backgroundColor = 'yellow';
                         statusDiv.style.padding = '2px 4px';
                         statusDiv.style.display = 'inline-block';
@@ -182,7 +182,7 @@ if (!isset($_SESSION['loggedin'])) {
                         li.appendChild(personPhoneDiv);
 
                         const statusDiv = document.createElement('div');
-                        statusDiv.innerHTML = '<b>Estado:</b> Vencida';
+                        statusDiv.innerHTML = '<b>Estado:Vencida</b> ';
                         statusDiv.style.backgroundColor = 'red';
                         statusDiv.style.padding = '2px 4px';
                         statusDiv.style.display = 'inline-block';
@@ -210,10 +210,19 @@ if (!isset($_SESSION['loggedin'])) {
 
                         expiredOrdersList.appendChild(li);
                     });
+
+
+
+
                 }
             })
             .catch(error => console.log('Error: ', error));
         });
+
+
+
+
+        
 
         function changeOrderStatus(orderId, rifaId, status) {
             fetch('../../../backend/changeOrderStatus.php', {
@@ -246,7 +255,7 @@ if (!isset($_SESSION['loggedin'])) {
             .then(data => {
                 if (data.success) {
                     const numbers = data.numbers.map(num => num.Number).join(', ');
-                    const message = `Nombre: ${data.order.PersonName}\nTeléfono: +52${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\nFecha de Pago: ${data.order.PaidDate}\nRifa: ${data.order.RifaName}\nDescripción: ${data.order.RifaDescription}\nTermina: ${data.order.EndDate}\nNúmero(s): ${numbers}`;
+                    const message = ` Nombre: ${data.order.PersonName}\nTeléfono: +52${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\nFecha de Pago: ${data.order.PaidDate}\nRifa: ${data.order.RifaName}\nDescripción: ${data.order.RifaDescription}\nTermina: ${data.order.EndDate}\nNúmero(s): ${numbers}`;
                     
                     // Redirigir a WhatsApp con el mensaje
                     const whatsappUrl = `https://wa.me/52${data.order.PersonPhone.replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
