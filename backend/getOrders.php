@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 }
 
 // Consultar órdenes pagadas (status 2) para la RifaId específica
-$queryPaid = "SELECT OrderId, RifaId, OrderDate, PersonName, PersonPhone, Estado FROM orders WHERE Status = 2 AND RifaId = ?";
+$queryPaid = "SELECT OrderId, RifaId, OrderDate, PersonName, PersonPhone, Estado FROM orders WHERE Status = 2 AND RifaId = ? order by OrderId desc";
 $stmtPaid = $conn->prepare($queryPaid);
 $stmtPaid->bind_param("i", $rifaId);
 $stmtPaid->execute();
@@ -28,7 +28,7 @@ $paidOrders = $resultPaid->fetch_all(MYSQLI_ASSOC);
 $stmtPaid->close();
 
 // Consultar órdenes pendientes (status 1) para la RifaId específica
-$queryPending = "SELECT OrderId, RifaId, OrderDate, PersonName, PersonPhone, Estado FROM orders WHERE Status = 1 AND RifaId = ? AND OrderDate >= DATE_SUB(NOW(), INTERVAL 1 DAY)";
+$queryPending = "SELECT OrderId, RifaId, OrderDate, PersonName, PersonPhone, Estado FROM orders WHERE Status = 1 AND RifaId = ? AND OrderDate >= DATE_SUB(NOW(), INTERVAL 1 DAY) order by OrderId desc";
 $stmtPending = $conn->prepare($queryPending);
 $stmtPending->bind_param("i", $rifaId);
 $stmtPending->execute();
@@ -37,7 +37,7 @@ $pendingOrders = $resultPending->fetch_all(MYSQLI_ASSOC);
 $stmtPending->close();
 
 // Consultar órdenes eliminadas (status 1 y fecha de orden mayor a 2 días) para la RifaId específica
-$queryDeleted = "SELECT OrderId, RifaId, OrderDate, PersonName, PersonPhone, Estado FROM orders WHERE Status = 1 AND RifaId = ? AND OrderDate < DATE_SUB(NOW(), INTERVAL 1 DAY)";
+$queryDeleted = "SELECT OrderId, RifaId, OrderDate, PersonName, PersonPhone, Estado FROM orders WHERE Status = 1 AND RifaId = ? AND OrderDate < DATE_SUB(NOW(), INTERVAL 1 DAY) order by OrderId desc";
 $stmtDeleted = $conn->prepare($queryDeleted);
 $stmtDeleted->bind_param("i", $rifaId);
 $stmtDeleted->execute();

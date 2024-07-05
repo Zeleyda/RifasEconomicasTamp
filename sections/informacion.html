@@ -35,6 +35,7 @@
         <p><strong>Descripción:</strong> <span id="rifaDescription"></span></p>
         <p><strong>Fecha de Fin:</strong> <span id="endDate"></span></p>
         <p><strong>Números:</strong> <span id="numbers"></span></p>
+        <p><strong>Total a pagar: $</strong> <span id="total"></span></p>
     </div>
 
     <script>
@@ -66,13 +67,14 @@
                         document.getElementById('rifaDescription').textContent = order.RifaDescription;
                         document.getElementById('endDate').textContent = order.EndDate;
                         document.getElementById('numbers').textContent = numbers;
+                        document.getElementById('total').textContent = data.totalToPay;
                     } else {
                         alert('No se pudo obtener los detalles de la orden');
                     }
                 })
                 .catch(error => {
                     window.location.href = '../index.php';
-                    alert('Error al obtener los detalles de la orden');
+                    alert('Error al obtener los detalles de la orden' + error);
                 });
             } else {
                 window.location.href = '../index.php';

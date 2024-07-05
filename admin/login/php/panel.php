@@ -26,7 +26,7 @@ if (!isset($_SESSION['loggedin'])) {
         <form>
             <label for="rifa_select">Elige una rifa:</label>
             <select id="rifa_select" name="rifa">
-                <option value=8>test</option>
+                <option>Seleccione una opcion</option>
             </select>
         </form>
         <a href="logout.php" class="logout-link">Salir</a>
@@ -142,13 +142,15 @@ if (!isset($_SESSION['loggedin'])) {
             });
             buttonContainer.appendChild(validateButton);
 
-            const infoButton = document.createElement('button');
-            infoButton.textContent = 'Generar Información';
-            infoButton.className = 'info-button validate-button';
-            infoButton.addEventListener('click', function () {
-                generateOrderInfo(order.OrderId);
-            });
-            buttonContainer.appendChild(infoButton);
+            if (status === 'Pagada') {
+                const infoButton = document.createElement('button');
+                infoButton.textContent = 'Generar Información';
+                infoButton.className = 'info-button validate-button';
+                infoButton.addEventListener('click', function () {
+                    generateOrderInfo(order.OrderId);
+                });
+                buttonContainer.appendChild(infoButton);
+            }
 
             listElement.appendChild(li);
         }
@@ -184,9 +186,9 @@ if (!isset($_SESSION['loggedin'])) {
             .then(data => {
                 if (data.success) {
                     const numbers = data.numbers.map(num => num.Number).join(', ');
-                    const message = `Nombre: *${data.order.PersonName}*\nTeléfono: +52${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\nFecha de Pago: ${data.order.PaidDate}\nRifa: *${data.order.RifaName}*\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: *${numbers}* \nLink: http://localhost/rifaseconomicastamp/sections/informacion?paramId_rf=${data.order.OrderId}`;
+                    const message = `_Hola! Hemos recibido el pago de tu orden en *RIFAS ECONOMICAS TAMPICO*, muchas gracias y muchisima suerte!!_ \n *Nombre:* ${data.order.PersonName}\n*Teléfono:* ${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\n*Fecha de Pago:* ${data.order.PaidDate}\n*Rifa: ${data.order.RifaName}*\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: *${numbers}* \nLink: http://localhost/rifaseconomicastamp/sections/informacion?paramId_rf=${data.order.OrderId}`;
                     
-                    const whatsappUrl = `https://wa.me/+52${data.order.PersonPhone.replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
+                    const whatsappUrl = `https://wa.me/${data.order.PersonPhone.replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                 } else {
                     alert('Error al generar la información de la orden.');
@@ -205,7 +207,7 @@ if (!isset($_SESSION['loggedin'])) {
             lists.forEach(list => {
                 Array.from(list.children).forEach(item => {
                     const personName = item.querySelector('div:nth-child(2)').textContent.toLowerCase();
-                    const personPhone = item.querySelector('div:nth-child(3)').textContent.toLowerCase();
+                    const personPhone = item.querySelector('div:nth-child(3)').textContent.toLowerCase().replace(/\s/g, '');
                     const searchText = query.toLowerCase();
                     if (personName.includes(searchText) || personPhone.includes(searchText)) {
                         item.style.display = '';

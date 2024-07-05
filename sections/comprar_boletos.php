@@ -298,11 +298,12 @@
                     <option value="Zacatecas">Zacatecas</option>
                 </select>
                 
-                <label for="personPhone">Número de Celular (WhatsApp):</label>
-                <input type="text" id="personPhone" name="personPhone" placeholder="10 dígitos sin espacios" required>
+                <label for="personPhone">Tu Número de Celular (WhatsApp) con lada:</label>
+                <input type="text" id="personPhone" name="personPhone" placeholder="Ejemplo: +52 123 456 7890" required>
                 
                 <p>¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!</p>
                 <p>Tu boleto sólo durará 24 horas apartado.</p>
+                <p>VERIFICA QUE TODOS TU NUMERO DE WHATSAPP SEA EL CORRECTO!.</p>
                 
                 <button type="submit">Apartar Boleto</button>
             </form>
@@ -311,8 +312,23 @@
     
 <?php include 'footer.html'; ?>
 <script src="/RifasEconomicasTamp/js/boletos.js"></script>
-<script src="/RifasEconomicasTamp/js/formulario.js"></script> <!-- Nuevo script -->
+<script src="/RifasEconomicasTamp/js/formulario.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
+ <!-- Nuevo script -->
 <script>
+    var isValidPhone = false;
+    $(document).ready(function () {
+        $("#personPhone").inputmask({
+            mask: "+9[9[9]] 999 999 9999",
+            showMaskOnHover: true,
+            showMaskOnFocus: true,
+            onincomplete: function () {
+                isValidPhone = false;
+            }
+            
+        });
+    });
     // Abrir y cerrar modal
     document.getElementById('openFormButton').onclick = function() {
         document.getElementById('boletosModal').style.display = 'block';

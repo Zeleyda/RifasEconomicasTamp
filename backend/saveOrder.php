@@ -92,7 +92,7 @@ try {
         // Confirmar la transacción
         $conn->commit();
 
-        echo json_encode(['success' => true]);
+        echo json_encode(['success' => true, 'orderId' => $orderId]);
     } catch (Exception $e) {
         // Revertir la transacción en caso de error
         $conn->rollback();

@@ -217,7 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                alert('Boletos apartados con éxito.');
+                const orderId = data.orderId;
+                //alert('Boletos apartados con éxito. ID de la orden: ' + orderId);
+                const message = `Hola!\nAcabo de apartar la siguiente orden: http://localhost/rifaseconomicastamp/sections/informacion?paramId_rf=${orderId}`;
+                const whatsappUrl = `https://wa.me/+528333399875?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
                 selectedButtons.forEach(button => {
                     button.classList.remove('ticket-container');
                     button.classList.add('occupied');

@@ -18,8 +18,8 @@ if ($conn->connect_error) {
     die(json_encode(['success' => false, 'message' => 'Conexión fallida: ' . $conn->connect_error]));
 }
 
-// Consultar detalles de la orden y la rifa
-$query = "SELECT o.OrderId, o.PersonName, o.PersonPhone, o.OrderDate, o.PaidDate, r.RifaName, r.RifaDescription, r.EndDate 
+// Consultar detalles de la orden y la rifa, incluyendo el precio del boleto
+$query = "SELECT o.OrderId, o.PersonName, o.PersonPhone, o.OrderDate, o.PaidDate, r.RifaName, r.RifaDescription, r.EndDate, r.PricePerNum 
           FROM orders o 
           JOIN rifas r ON o.RifaId = r.RifaId 
           WHERE o.OrderId = ?";
@@ -39,11 +39,17 @@ $resultNumbers = $stmtNumbers->get_result();
 $numbers = $resultNumbers->fetch_all(MYSQLI_ASSOC);
 $stmtNumbers->close();
 
+// Calcular total a pagar
+$totalNumbers = count($numbers);
+$pricePerNum = isset($orderDetails['PricePerNum']) ? $orderDetails['PricePerNum'] : 0;
+$totalToPay = $totalNumbers * $pricePerNum;
+
 // Construir respuesta
 $response = [
     'success' => true,
     'order' => $orderDetails,
-    'numbers' => $numbers
+    'numbers' => $numbers,
+    'totalToPay' => $totalToPay
 ];
 
 // Cerrar conexión
