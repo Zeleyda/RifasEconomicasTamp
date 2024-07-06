@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let rifaId = -1; // Asume que tienes un rifaId fijo o puedes obtenerlo dinámicamente
 
     // Fetching the last rifa ID from the API
-    fetch(`../backend/getLastRifaId.php`)
+    fetch(`/api.php?api=getLastRifaId`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetching max numbers from the API
     function fetchMaxNumbers() {
-        fetch(`../backend/getMaxNumbers.php?rifaId=${rifaId}`)
+        fetch(`/api.php?api=getMaxNumbers&rifaId=${rifaId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetching occupied numbers from the API
     function fetchOccupiedNumbers() {
-        fetch(`../backend/getOccupiedNumbers.php?rifaId=${rifaId}`)
+        fetch(`/api.php?api=getOccupiedNumbers&rifaId=${rifaId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function randomNumbers(){
         generatedRandomNumbers = [];
         var gif = document.getElementById('generarNumerosGif');
-        gif.src = '/RifasEconomicasTamp/images/rul_1.gif'; // Cambiar al GIF animado
+        gif.src = '/images/rul_1.gif'; // Cambiar al GIF animado
         var cantidad = document.getElementById('cantidadBoletos').value;
         
 
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         setTimeout(function() {
-            gif.src = '/RifasEconomicasTamp/images/rul_2.png'; // Volver a la imagen estática
+            gif.src = '/images/rul_2.png'; // Volver a la imagen estática
         var cantidad = document.getElementById('cantidadBoletos').value;
         for(let i=0; i<cantidad; i++){
             var searchValue = Math.floor(Math.random() * maxNumbers) + 1;
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const numeros = selectedButtons.map(button => parseInt(button.textContent, 10));
 
         
-        fetch('../backend/saveOrder.php', {
+        fetch('/api.php?api=saveOrder', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -218,9 +218,9 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.success) {
                 const orderUuid = data.orderUuid;
-                const currentUrl = 'https://895e-2806-230-1600-c993-897c-8257-e888-ed03.ngrok-free.app';
+                const currentUrl = window.location.host;
                 
-                const message = `Hola!\nAcabo de apartar la siguiente orden: ${currentUrl}/rifaseconomicastamp/sections/informacion?paramId_rf=${orderUuid}`;
+                const message = `Hola!\nAcabo de apartar la siguiente orden: ${currentUrl}/sections/informacion?paramId_rf=${orderUuid}`;
                 const whatsappUrl = `https://wa.me/528333399875?text=${encodeURIComponent(message)}`;
                 //alert(`Boletos apartados con éxito. Seras redirigido a whatspp Sino copia este url y mandalo a nosotros por whatsapp ${whatsappUrl}`);
                 window.open(whatsappUrl, '_blank');

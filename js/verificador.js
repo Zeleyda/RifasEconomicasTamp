@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let maxNumbers = 50000; // Valor por defecto
 
     // Obtener el último ID de rifa
-    fetch('../backend/getLastRifaId.php')
+    fetch('/api.php?api=getLastRifaId')
         .then(response => response.json())
         .then(data => {
             if (data.success) {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Obtener el número máximo de números
     function fetchMaxNumbers() {
-        fetch(`../backend/getMaxNumbers.php?rifaId=${rifaId}`)
+        fetch(`/api.php?api=getMaxNumbers&rifaId=${rifaId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        fetch('../backend/checkNumber.php', {
+        return fetch('/api.php?api=checkNumber', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

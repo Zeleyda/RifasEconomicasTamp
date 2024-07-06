@@ -55,15 +55,15 @@
                 <div class="carousel">
                     <div class="slide">
                        <img src="images/camioneta1.jpg" alt="Slide 1">
-                       <a href="sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
+                       <a href="/sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
                     </div>
                     <div class="slide">
                         <img src="images/camioneta2.jpg" alt="Slide 2">
-                        <a href="sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
+                        <a href="/sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
                     </div>
                     <div class="slide">
                         <img src="images/camioneta3.jpg" alt="Slide 3">
-                        <a href="sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
+                        <a href="/sections/comprar_boletos.php" class="buy-button"><span>COMPRAR BOLETO</span></a>
                     </div>
                 </div>
                 <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -75,7 +75,7 @@
                 <div class="info-box" id="info00">
                     <h3>RIFAS ECONOMICAS TAMPICO</h3>
                     <p>¡Bienvenidos! a <strong>RIFAS ECONOMICAS TAMPICO</strong>, realizamos sorteos en base a la Lotería Nacional, en nuestros sorteos participan amigos de todo México, estamos ubicados en Tampico Tamaulipas.</p>
-                    <img src="images/logotipoempresa.png" alt="Logo Rifa entre amigos" class="info-image">
+                    <img src='/' alt="Logo Rifa entre amigos" class="info-image">
                 </div>
             </div>
 
@@ -150,7 +150,7 @@
                         <h2>40 BOLETOS POR $280</h2>
                     </div>
                     
-                    <a href="sections/comprar_boletos.php" class="buy-button">COMPRAR BOLETO</a>
+                    <a href="/sections/comprar_boletos.php" class="buy-button">COMPRAR BOLETO</a>
                 </div>
 
                 <h2 class="info-title" id="info4-title">MÉTODOS DE PAGO</h2>
@@ -173,10 +173,10 @@
 
     <!-- Botón flotante de WhatsApp -->
     <button class="whatsapp-button" onclick="window.location.href='https://wa.me/528333399875'">
-        <img src="images/whats3.png" alt="WhatsApp">
+        <img src="/images/whats3.png" alt="WhatsApp">
     </button>
 
-    <script src="js/navbar.js"></script>
+    <script src="/RifasEconomicasTamp/js/navbar.js"></script>
     <script src="js/carousel.js"></script>
     <script src="js/info.js"></script>
     <script src="js/accordion.js"></script>

@@ -19,7 +19,7 @@
     <div class="container">
         <h1 class="main-title">Verificar Boleto</h1>      
         <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Introduce un número del 0 al 50000...">
+            <input type="text" id="search-input" placeholder="Introduce un número...">
             <button id="reserve-button">Buscar</button>
         </div>
         <div id="message"></div>

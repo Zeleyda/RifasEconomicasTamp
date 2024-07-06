@@ -45,7 +45,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         <div class="login-header">
             <img src="../icons/logotipoempresa.png" alt="Logo Empresa">
         </div>
-        <form class="login-form" action="../../../backend/login.php" method="post" onsubmit="showLoading()">
+        <form class="login-form" action="/api.php?api=login" method="post" onsubmit="showLoading()">
             <div class="input-container">
                 <input type="text" name="username" placeholder="Username" required>
             </div>

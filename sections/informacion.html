@@ -45,7 +45,7 @@
             const orderId = urlParams.get('paramId_rf');
             if (orderId) {
                 // Hacer una solicitud a la API
-                fetch(`../backend/getOrderDetails.php?uuid=${orderId}`)
+                fetch(`/api.php?api=getOrderDetails&uuid=${orderId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {

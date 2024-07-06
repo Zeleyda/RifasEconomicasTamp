@@ -53,7 +53,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     <script>
         function getRifas() {
-            fetch('../../../backend/getRifas.php')
+            fetch('/api.php?api=getRifas')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -79,7 +79,7 @@ if (!isset($_SESSION['loggedin'])) {
             const selectedIndex = comboBox.options[comboBox.selectedIndex].value;
 
             const rifaId = selectedIndex;
-            fetch('../../../backend/getOrders.php', {
+            fetch('/api.php?api=getOrders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ if (!isset($_SESSION['loggedin'])) {
         }
 
         function changeOrderStatus(orderId, rifaId, status) {
-            fetch('../../../backend/changeOrderStatus.php', {
+            fetch('/api.php?api=changeOrderStatus', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -175,7 +175,7 @@ if (!isset($_SESSION['loggedin'])) {
         }
 
         function generateOrderInfo(orderId) {
-            fetch('../../../backend/getOrderDetailsById.php', {
+            fetch('/api.php?api=getOrderDetailsById', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -185,9 +185,9 @@ if (!isset($_SESSION['loggedin'])) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    const currentUrl = 'https://895e-2806-230-1600-c993-897c-8257-e888-ed03.ngrok-free.app';
+                    const currentUrl = window.location.host;
                     const numbers = data.numbers.map(num => num.Number).join(', ');
-                    const message = `_Hola! Hemos recibido el pago de tu orden en *RIFAS ECONOMICAS TAMPICO*, muchas gracias y muchisima suerte!!_ \n *Nombre:* ${data.order.PersonName}\n*Teléfono:* ${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\n*Fecha de Pago:* ${data.order.PaidDate}\n*Rifa: ${data.order.RifaName}*\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: *${numbers}* \nLink: ${currentUrl}/rifaseconomicastamp/sections/informacion?paramId_rf=${data.order.UUID}`;
+                    const message = `_Hola! Hemos recibido el pago de tu orden en *RIFAS ECONOMICAS TAMPICO*, muchas gracias y muchisima suerte!!_ \n *Nombre:* ${data.order.PersonName}\n*Teléfono:* ${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\n*Fecha de Pago:* ${data.order.PaidDate}\n*Rifa: ${data.order.RifaName}*\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: *${numbers}* \nLink: ${currentUrl}/sections/informacion?paramId_rf=${data.order.UUID}`;
                     
                     const whatsappUrl = `https://wa.me/${data.order.PersonPhone.replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
                     setTimeout(() => {
