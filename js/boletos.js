@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const message = `Hola!\nAcabo de apartar la siguiente orden: ${currentUrl}/rifaseconomicastamp/sections/informacion?paramId_rf=${orderUuid}`;
                 const whatsappUrl = `https://wa.me/528333399875?text=${encodeURIComponent(message)}`;
-                alert(`Boletos apartados con éxito. Seras redirigido a whatspp Sino copia este url y mandalo a nosotros por whatsapp ${whatsappUrl}`);
+                //alert(`Boletos apartados con éxito. Seras redirigido a whatspp Sino copia este url y mandalo a nosotros por whatsapp ${whatsappUrl}`);
                 window.open(whatsappUrl, '_blank');
                 selectedButtons.forEach(button => {
                     button.classList.remove('ticket-container');
