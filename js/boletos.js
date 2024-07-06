@@ -217,10 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const orderId = data.orderId;
-                //alert('Boletos apartados con éxito. ID de la orden: ' + orderId);
-                const message = `Hola!\nAcabo de apartar la siguiente orden: http://localhost/rifaseconomicastamp/sections/informacion?paramId_rf=${orderId}`;
-                const whatsappUrl = `https://wa.me/+528333399875?text=${encodeURIComponent(message)}`;
+                const orderUuid = data.orderUuid;
+                const currentUrl = 'https://895e-2806-230-1600-c993-897c-8257-e888-ed03.ngrok-free.app';
+                
+                const message = `Hola!\nAcabo de apartar la siguiente orden: ${currentUrl}/rifaseconomicastamp/sections/informacion?paramId_rf=${orderUuid}`;
+                const whatsappUrl = `https://wa.me/528333399875?text=${encodeURIComponent(message)}`;
+                alert(`Boletos apartados con éxito. Seras redirigido a whatspp Sino copia este url y mandalo a nosotros por whatsapp ${whatsappUrl}`);
                 window.open(whatsappUrl, '_blank');
                 selectedButtons.forEach(button => {
                     button.classList.remove('ticket-container');

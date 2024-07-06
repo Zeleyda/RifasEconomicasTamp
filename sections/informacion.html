@@ -45,13 +45,7 @@
             const orderId = urlParams.get('paramId_rf');
             if (orderId) {
                 // Hacer una solicitud a la API
-                fetch('../backend/getOrderDetails.php', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ orderId: orderId })
-                })
+                fetch(`../backend/getOrderDetails.php?uuid=${orderId}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
@@ -70,6 +64,7 @@
                         document.getElementById('total').textContent = data.totalToPay;
                     } else {
                         alert('No se pudo obtener los detalles de la orden');
+                        console.log(orderId);
                     }
                 })
                 .catch(error => {

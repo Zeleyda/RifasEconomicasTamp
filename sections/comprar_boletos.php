@@ -299,11 +299,11 @@
                 </select>
                 
                 <label for="personPhone">Tu Número de Celular (WhatsApp) con lada:</label>
-                <input type="text" id="personPhone" name="personPhone" placeholder="Ejemplo: +52 123 456 7890" required>
+                <input type="text" value="+52" id="personPhone" name="personPhone" placeholder="Ejemplo: +52 123 456 7890" required>
                 
                 <p>¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!</p>
                 <p>Tu boleto sólo durará 24 horas apartado.</p>
-                <p>VERIFICA QUE TODOS TU NUMERO DE WHATSAPP SEA EL CORRECTO!.</p>
+                <p>VERIFICA QUE TODOS TUS DATOS Y SOBRE TODO TU NUMERO DE WHATSAPP SEA EL CORRECTO!.</p>
                 
                 <button type="submit">Apartar Boleto</button>
             </form>
@@ -320,7 +320,7 @@
     var isValidPhone = false;
     $(document).ready(function () {
         $("#personPhone").inputmask({
-            mask: "+9[9[9]] 999 999 9999",
+            mask: "+9[9] 999 999 9999",
             showMaskOnHover: true,
             showMaskOnFocus: true,
             onincomplete: function () {

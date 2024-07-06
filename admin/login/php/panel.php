@@ -175,7 +175,7 @@ if (!isset($_SESSION['loggedin'])) {
         }
 
         function generateOrderInfo(orderId) {
-            fetch('../../../backend/getOrderDetails.php', {
+            fetch('../../../backend/getOrderDetailsById.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -185,11 +185,14 @@ if (!isset($_SESSION['loggedin'])) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
+                    const currentUrl = 'https://895e-2806-230-1600-c993-897c-8257-e888-ed03.ngrok-free.app';
                     const numbers = data.numbers.map(num => num.Number).join(', ');
-                    const message = `_Hola! Hemos recibido el pago de tu orden en *RIFAS ECONOMICAS TAMPICO*, muchas gracias y muchisima suerte!!_ \n *Nombre:* ${data.order.PersonName}\n*Teléfono:* ${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\n*Fecha de Pago:* ${data.order.PaidDate}\n*Rifa: ${data.order.RifaName}*\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: *${numbers}* \nLink: http://localhost/rifaseconomicastamp/sections/informacion?paramId_rf=${data.order.OrderId}`;
+                    const message = `_Hola! Hemos recibido el pago de tu orden en *RIFAS ECONOMICAS TAMPICO*, muchas gracias y muchisima suerte!!_ \n *Nombre:* ${data.order.PersonName}\n*Teléfono:* ${data.order.PersonPhone.replaceAll(/\s/g,'')}\nFecha de Apartado: ${data.order.OrderDate}\n*Fecha de Pago:* ${data.order.PaidDate}\n*Rifa: ${data.order.RifaName}*\nDescripción: ${data.order.RifaDescription}\nFecha de Fin: ${data.order.EndDate}\nNúmeros: *${numbers}* \nLink: ${currentUrl}/rifaseconomicastamp/sections/informacion?paramId_rf=${data.order.UUID}`;
                     
                     const whatsappUrl = `https://wa.me/${data.order.PersonPhone.replace(/\s/g, '')}?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappUrl, '_blank');
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                    })
                 } else {
                     alert('Error al generar la información de la orden.');
                 }

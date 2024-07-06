@@ -69,16 +69,24 @@ try {
 
             if ($stmt->num_rows > 0) {
                 $stmt->close();
-                throw new Exception('El número ya está reservado en una orden pendiente de pago o es reciente.');
+                throw new Exception('Alguno de los boletos seleccionados ya fue ocupado por otro usuario. Por favor seleccione otros');
             }
             $stmt->close();
         }
 
-        // Insertar la orden
-        $stmt = $conn->prepare("INSERT INTO orders (RifaId, OrderDate, Status, PersonName, PersonPhone, Estado) VALUES (?, NOW(), 1, ?, ?, ?)");
+        // Insertar la orden y obtener el UUID
+        $stmt = $conn->prepare("INSERT INTO orders (RifaId, OrderDate, Status, PersonName, PersonPhone, Estado, UUID) VALUES (?, NOW(), 1, ?, ?, ?, UUID())");
         $stmt->bind_param("isss", $rifaId, $personName, $personPhone, $estado);
         $stmt->execute();
         $orderId = $stmt->insert_id;
+
+        // Obtener el UUID de la orden recién insertada
+        $query = "SELECT UUID FROM orders WHERE OrderId = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $orderId);
+        $stmt->execute();
+        $stmt->bind_result($orderUuid);
+        $stmt->fetch();
         $stmt->close();
 
         // Insertar los números
@@ -92,7 +100,7 @@ try {
         // Confirmar la transacción
         $conn->commit();
 
-        echo json_encode(['success' => true, 'orderId' => $orderId]);
+        echo json_encode(['success' => true, 'orderId' => $orderId, 'orderUuid' => $orderUuid]);
     } catch (Exception $e) {
         // Revertir la transacción en caso de error
         $conn->rollback();
