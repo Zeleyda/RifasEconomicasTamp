@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/boletos.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
+    <link rel="stylesheet" href="../styles/boletos.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
     <style>
         .definition-list {
             list-style-type: none;
@@ -37,9 +37,9 @@
         
       }
     </style>
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/formulario.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/formulario.css">
+    <link rel="stylesheet" href="../styles/background.css">
     <title>RIFAS ECONOMICAS TAMPICO</title>
     
 </head>
@@ -107,7 +107,7 @@
     </div>
     
 <?php include 'footer.html'; ?>
-<script src="/RifasEconomicasTamp/js/boletos.js"></script>
-<script src="/RifasEconomicasTamp/js/formulario.js"></script> <!-- Nuevo script -->
+<script src="../js/boletos.js"></script>
+<script src="../js/formulario.js"></script> <!-- Nuevo script -->
 </body>
 </html>

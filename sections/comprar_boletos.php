@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/boletos.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/formulario.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
+    <link rel="stylesheet" href="../styles/boletos.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/formulario.css">
+    <link rel="stylesheet" href="../styles/background.css">
     <title>RIFAS ECONOMICAS TAMPICO</title>
     <style>
         .gif-button-container {
@@ -199,7 +199,7 @@
             </div>
             <div class="gif-button-container">
                 <button class="gif-button" id="openFormButton">
-                    <img src="/RifasEconomicasTamp/images/mapache.gif" alt="GIF Button">
+                    <img src="../images/mapache.gif" alt="GIF Button">
                 </button>
             </div>
             <div class="button-container" id="button-container">
@@ -242,7 +242,7 @@
             <p>Haz clic en la imagen para generar tus números de la suerte:</p>
             <div class="gif-button-container">
                 <button class="gif-button" id="generarNumerosButton">
-                    <img id="generarNumerosGif" src="/RifasEconomicasTamp/images/rul_2.png" alt="Generar Números">
+                    <img id="generarNumerosGif" src="../images/rul_2.png" alt="Generar Números">
                 </button>
             </div>
             <div id="numerosGenerados" class="numeros-generados" style="display:none;">
@@ -311,8 +311,8 @@
     </div>
     
 <?php include 'footer.html'; ?>
-<script src="/RifasEconomicasTamp/js/boletos.js"></script>
-<script src="/RifasEconomicasTamp/js/formulario.js"></script>
+<script src="../js/boletos.js"></script>
+<script src="../js/formulario.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.9/jquery.inputmask.min.js"></script>
  <!-- Nuevo script -->

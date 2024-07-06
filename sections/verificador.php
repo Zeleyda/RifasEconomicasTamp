@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RIFAS ECONOMICAS TAMPICO</title>
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/verificador.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/navbar.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/footer.css">
-    <link rel="stylesheet" href="/RifasEconomicasTamp/styles/background.css">
+    <link rel="stylesheet" href="../styles/verificador.css">
+    <link rel="stylesheet" href="../styles/navbar.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/background.css">
 </head>
 <body>
 <div class="background-image"></div>
@@ -35,6 +35,6 @@
     </div>
 
     <?php include 'footer.html'; ?>
-    <script src="/RifasEconomicasTamp/js/verificador.js"></script>
+    <script src="../js/verificador.js"></script>
 </body>
 </html>
